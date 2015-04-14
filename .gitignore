@@ -1,3 +1,7 @@
-*auto-save-list
-*elpa
-
+auto-save-list
+bookmarks
+elpa
+external
+ido.last*
+irony
+projectile*

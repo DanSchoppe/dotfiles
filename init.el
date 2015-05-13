@@ -4,11 +4,42 @@
 (setq indent-tabs-mode nil)
 (setq tab-width 2)
 
+;; Whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(setq show-trailing-whitespace 1)
+
 ;; Text size
 (set-face-attribute 'default nil :height 95) ;; value in 1/10pt, so 100 will be 10pt font
 
+;; Show line and column numbers
+(setq line-number-mode t)
+(setq column-number-mode t)
+
 ;; Word navigation for camelCase
 (global-subword-mode 1)
+
+;; Scrolling
+(global-set-key "\M-n"  (lambda () (interactive) (scroll-up   4)) )
+(global-set-key "\M-p"  (lambda () (interactive) (scroll-down 4)) )
+
+;; Reloading buffer from disk
+(global-set-key (kbd "C-x C-r") 'revert-buffer)
+
+;; Matching parenthesis
+(setq show-paren-delay 0)
+(show-paren-mode 1)
+
+;; Switching between source and header files
+(add-hook 'c-mode-common-hook
+  (lambda()
+    (local-set-key  (kbd "C-c o") 'ff-find-other-file)))
+
+;; Commenting and uncommenting region
+(global-set-key (kbd "C-c C-c") 'comment-region)
+(global-set-key (kbd "C-c C-u") 'uncomment-region)
+
+;; Open header files in c++-mode
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 ;; Packages
 (package-initialize)
@@ -25,6 +56,7 @@
 	magit
 	multiple-cursors
 	projectile
+	undo-tree
 	))
 
 ;; Set PATH
@@ -38,6 +70,10 @@
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
+
+;; Undo tree
+(require 'undo-tree)
+(global-undo-tree-mode 1)
 
 ;; Ace jump (Quick Emacs cursor navigation)
 (add-to-list 'load-path "~/emacs.d/elpa/ace-jump-mode-20140616.115/")
@@ -58,10 +94,17 @@
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 ;; Window resize
-(global-set-key (kbd "S-C-<left>") 'Shrink-window-horizontally)
-(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
-(global-set-key (kbd "S-C-<down>") 'shrink-window)
-(global-set-key (kbd "S-C-<up>") 'enlarge-window)
+(global-set-key (kbd "M-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "M-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "M-<down>") 'shrink-window)
+(global-set-key (kbd "M-<up>") 'enlarge-window)
+
+;; Buffer-move
+(require 'buffer-move)
+(global-set-key (kbd "M-S-<up>") 'buf-move-up)
+(global-set-key (kbd "M-S-<down>")   'buf-move-down)
+(global-set-key (kbd "M-S-<left>")   'buf-move-left)
+(global-set-key (kbd "M-S-<right>")  'buf-move-right)
 
 ;; Projectile (project definition)
 (projectile-global-mode)
@@ -87,67 +130,64 @@
 
 ;; RTags
 (require 'rtags)
-(global-set-key [C-return] 'rtags-find-symbol-at-point)
+(global-set-key (kbd "M-RET") 'rtags-find-symbol-at-point)
 
 ;; Flycheck
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(global-set-key (kbd "C-x C-n") 'flycheck-next-error)
+(global-set-key (kbd "C-x C-p") 'flycheck-previous-error)
 
-;;;; (setq c++-mode-hook nil)
-;;(add-hook 'c++-mode-hook
-;;          (lambda ()
-;;            (setq c-basic-offset 2)
-;;            (c-set-offset 'innamespace 0)
-;;            (setq tab-width 2)
-;;            (setq indent-tabs-mode nil)
-;;            (setq flycheck-check-syntax-automatically
-;;                  '(mode-enabled new-line save))
-;;            (setq flycheck-clang-language-standard "c++1y")
-;;            (setq flycheck-clang-standard-library "libc++")
-;;            (setq flycheck-clang-include-path
-;;                  '("/usr/lib/c++/v1"
-;;                    "/Users/seanbillig/local/include"
-;;                    "/Users/seanbillig/local/include/libxml2"
-;;                    "/Users/seanbillig/code/modeler_new/external"
-;;                    "/Users/seanbillig/code/core/dex/external"
-;;                    "/Users/seanbillig/code/core/newparser/external"
-;;                    "/Users/seanbillig/code/core/dex_newparser/src"
-;;                    "/Users/seanbillig/code/core/dex_newparser/external"
-;;                    "/Users/seanbillig/code/core/dex_newparser/build/debug"
-;;                    "/Users/seanbillig/code/core/dex/OSX/deps"
-;;                    "/Users/seanbillig/code/core/dex/build/debug"
-;;                    "/Users/seanbillig/code/core/dex/build/msgpack/include"
-;;                    "/Users/seanbillig/code/core/spirit_x3/include"))))
+;; (setq c++-mode-hook nil)
+(add-hook 'c++-mode-hook
+          (lambda ()
+            (setq c-basic-offset 2)
+            (c-set-offset 'innamespace 0)
+            (setq tab-width 2)
+            (setq indent-tabs-mode nil)
+            (setq flycheck-check-syntax-automatically
+                  '(mode-enabled new-line save idle-change))
+	    (setq flycheck-idle-change-delay 0.1)
+            (setq flycheck-clang-language-standard "c++1y")
+            (setq flycheck-clang-standard-library "libc++")
+            (setq flycheck-clang-include-path
+                  '("/Users/danschoppe/local/Cellar/llvm/3.5.1/include/c++/v1"
+		    "/Users/danschoppe/local/include"
+                    "/Users/danschoppe/local/include/libxml2"
+                    "/Users/danschoppe/Code/core/dex/src"
+                    "/Users/danschoppe/Code/core/dex/external"
+                    "/Users/danschoppe/Code/core/dex/build/debug"
+                    "/Users/danschoppe/Code/core/dex/OSX/deps"
+                    "/Users/danschoppe/Code/core/dex/build/msgpack/include"))))
 
-;; irony-mode smart auto-completion
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'objc-mode-hook 'irony-mode)
-;; replace the `completion-at-point' and `complete-symbol' bindings in
-;; irony-mode's buffers by irony-mode's function
-(defun my-irony-mode-hook ()
-  (define-key irony-mode-map [remap completion-at-point]
-    'irony-completion-at-point-async)
-  (define-key irony-mode-map [remap complete-symbol]
-    'irony-completion-at-point-async))
-(add-hook 'irony-mode-hook 'my-irony-mode-hook)
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-(global-set-key (kbd "C-SPC") 'company-complete)
+;;;; irony-mode smart auto-completion
+;;(add-hook 'c++-mode-hook 'irony-mode)
+;;(add-hook 'c-mode-hook 'irony-mode)
+;;(add-hook 'objc-mode-hook 'irony-mode)
+;;;; replace the `completion-at-point' and `complete-symbol' bindings in
+;;;; irony-mode's buffers by irony-mode's function
+;;(defun my-irony-mode-hook ()
+;;  (define-key irony-mode-map [remap completion-at-point]
+;;    'irony-completion-at-point-async)
+;;  (define-key irony-mode-map [remap complete-symbol]
+;;    'irony-completion-at-point-async))
+;;(add-hook 'irony-mode-hook 'my-irony-mode-hook)
+;;(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+;;(global-set-key (kbd "<C-return>") 'company-complete)
+;;
+;;;; company-irony completion backend for irony-mode
+;;(eval-after-load 'company
+;;  '(add-to-list 'company-backends 'company-irony))
+;;;; (optional) adds CC special commands to `company-begin-commands' in order to
+;;;; trigger completion at interesting places, such as after scope operator
+;;;;     std::|
+;;(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
 
-;; company-irony completion backend for irony-mode
+;; Company-rtags
 (eval-after-load 'company
-  '(add-to-list 'company-backends 'company-irony))
-;; (optional) adds CC special commands to `company-begin-commands' in order to
-;; trigger completion at interesting places, such as after scope operator
-;;     std::|
-(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+  '(add-to-list 'company-backends 'company-rtags))
+(setq rtags-completions-enabled t)
+(global-set-key (kbd "<C-return>") 'company-complete)
 
 ;; Company mode
 (add-hook 'after-init-hook 'global-company-mode)
-
-;; Buffer-move
-(require 'buffer-move)
-(global-set-key (kbd "M-S-<up>") 'Buf-move-up)
-(global-set-key (kbd "M-S-<down>")   'buf-move-down)
-(global-set-key (kbd "M-S-<left>")   'buf-move-left)
-(global-set-key (kbd "M-S-<right>")  'buf-move-right)

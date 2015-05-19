@@ -22,6 +22,10 @@
 (global-set-key "\M-n"  (lambda () (interactive) (scroll-up   4)) )
 (global-set-key "\M-p"  (lambda () (interactive) (scroll-down 4)) )
 
+;; Moving between windows with Shift+Arrows
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
+
 ;; Reloading buffer from disk
 (global-set-key (kbd "C-x C-r") 'revert-buffer)
 
@@ -40,6 +44,16 @@
 
 ;; Open header files in c++-mode
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+;; Open codex files in js-mode
+(add-to-list 'auto-mode-alist '("\\.codex\\'" . js-mode))
+(add-hook 'js-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)
+            (setq tab-width 2)
+            (setq js-indent-level 2)
+            ;; (smart-tabs-mode-enable)
+            ;; (smart-tabs-advice js-indent-line js-indent-level)
+            ))
 
 ;; Packages
 (package-initialize)
@@ -160,6 +174,7 @@
                     "/Users/danschoppe/Code/core/dex/OSX/deps"
                     "/Users/danschoppe/Code/core/dex/build/msgpack/include"))))
 
+
 ;;;; irony-mode smart auto-completion
 ;;(add-hook 'c++-mode-hook 'irony-mode)
 ;;(add-hook 'c-mode-hook 'irony-mode)
@@ -191,3 +206,23 @@
 
 ;; Company mode
 (add-hook 'after-init-hook 'global-company-mode)
+
+
+
+
+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(js3-auto-indent-p t)
+ '(js3-consistent-level-indent-inner-bracket nil)
+ '(js3-curly-indent-offset 0)
+ '(js3-enter-indents-newline t)
+ '(js3-global-externs (quote ("require" "console")))
+ '(js3-idle-timer-delay 0.4)
+ '(js3-indent-on-enter-key t)
+ '(js3-pretty-vars nil)
+ '(js3-strict-trailing-comma-warning nil))

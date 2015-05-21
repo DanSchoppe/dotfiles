@@ -3,6 +3,10 @@
 ;; Save Emacs Sessions
 (desktop-save-mode 1)
 
+;; Disable startup screen
+(custom-set-variables
+  '(inhibit-startup-screen t))
+
 ;; Tabs
 (setq indent-tabs-mode nil)
 (setq tab-width 2)
@@ -64,15 +68,18 @@
 (setq auto-installed-packages
       '(ace-jump-mode
 	autopair
+	buffer-move
 	color-theme
 	company
 	company-irony
 	irony-mode
 	exec-path-from-shell
+	flx-ido
 	flycheck
 	magit
 	multiple-cursors
 	projectile
+	rtags
 	undo-tree
 	))
 

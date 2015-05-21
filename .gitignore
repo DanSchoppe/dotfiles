@@ -1,8 +1,11 @@
-auto-save-list
-bookmarks
-elpa
-external
-ido.last*
-irony
-projectile*
-.emacs.desktop*
+# Exclude all files
+*
+
+# git stuff
+!.gitignore
+
+# Shell config
+!.bashrc
+
+# Emacs config
+!/.emacs.d/*

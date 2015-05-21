@@ -1,5 +1,5 @@
 # Exclude all files
-*
+/*
 
 # git stuff
 !.gitignore
@@ -8,4 +8,7 @@
 !.bashrc
 
 # Emacs config
-!/.emacs.d/*
+!/.emacs.d/
+/.emacs.d/*
+!/.emacs.d/.init.el
+!/.emacs.d/.mc-lists.el

@@ -1,5 +1,8 @@
 ;;; Dan Schoppe's Emacs init / configuration file
 
+;; Save Emacs Sessions
+(desktop-save-mode 1)
+
 ;; Tabs
 (setq indent-tabs-mode nil)
 (setq tab-width 2)
@@ -225,4 +228,10 @@
  '(js3-idle-timer-delay 0.4)
  '(js3-indent-on-enter-key t)
  '(js3-pretty-vars nil)
- '(js3-strict-trailing-comma-warning nil))
+ '(js3-strict-trailing-comma-warning nil)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(term ((t (:inherit default)))))

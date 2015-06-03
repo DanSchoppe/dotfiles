@@ -20,6 +20,30 @@
  '(js3-pretty-vars nil)
  '(js3-strict-trailing-comma-warning nil))
 
+;; Packages
+(package-initialize)
+(setq package-enable-at-startup nil)
+(setq auto-installed-packages
+      '(ace-jump-mode
+	autopair
+	buffer-move
+	color-theme
+	company
+	company-irony
+	irony-mode
+	exec-path-from-shell
+	flx-ido
+	flycheck
+	magit
+	multiple-cursors
+	projectile
+	rtags
+	undo-tree
+	))
+
+;; Save Emacs Sessions
+(desktop-save-mode 1)
+
 ;; Tabs
 (setq indent-tabs-mode nil)
 (setq tab-width 2)
@@ -42,10 +66,6 @@
 (global-set-key "\M-n"  (lambda () (interactive) (scroll-up   4)) )
 (global-set-key "\M-p"  (lambda () (interactive) (scroll-down 4)) )
 
-;; Moving between windows with Shift+Arrows
-(when (fboundp 'windmove-default-keybindings)
-  (windmove-default-keybindings))
-
 ;; Reloading buffer from disk
 (global-set-key (kbd "C-x C-r") 'revert-buffer)
 
@@ -63,6 +83,10 @@
   #'(define-key c++-mode-map (kbd "C-c C-u") nil))
 (global-set-key (kbd "C-c C-c") 'comment-region)
 (global-set-key (kbd "C-c C-u") 'uncomment-region)
+
+;; Cycling buffers
+(global-set-key (kbd "C-x C-p") 'previous-buffer)
+(global-set-key (kbd "C-x C-n") 'next-buffer)
 
 ;; Auto-indenting yanked text
 (defun yank-and-indent ()
@@ -93,32 +117,6 @@
 (setq org-src-fontify-natively t)
 (setq org-src-window-setup (quote current-window))
 (setq org-src-ask-before-returning-to-edit-buffer nil)
-;; Make windmove work in org-mode:
-(add-hook 'org-shiftup-final-hook 'windmove-up)
-(add-hook 'org-shiftleft-final-hook 'windmove-left)
-(add-hook 'org-shiftdown-final-hook 'windmove-down)
-(add-hook 'org-shiftright-final-hook 'windmove-right)
-
-;; Packages
-(package-initialize)
-(setq package-enable-at-startup nil)
-(setq auto-installed-packages
-      '(ace-jump-mode
-	autopair
-	buffer-move
-	color-theme
-	company
-	company-irony
-	irony-mode
-	exec-path-from-shell
-	flx-ido
-	flycheck
-	magit
-	multiple-cursors
-	projectile
-	rtags
-	undo-tree
-	))
 
 ;; Set PATH
 (exec-path-from-shell-initialize)
@@ -165,10 +163,18 @@
 (global-set-key (kbd "M-<up>") 'enlarge-window)
 
 ;; Window navigation
-(global-set-key (kbd "C-c C-s") 'windmove-left)
-(global-set-key (kbd "C-c C-d") 'windmove-down)
-(global-set-key (kbd "C-c C-f") 'windmove-right)
-(global-set-key (kbd "C-c C-e") 'windmove-up)
+;; (global-set-key (kbd "S-<left>") 'windmove-left)
+;; (global-set-key (kbd "S-<right>") 'windmove-right)
+;; (global-set-key (kbd "S-<up>") 'windmove-up)
+;; (global-set-key (kbd "S-<down>") 'windmove-down)
+(eval-after-load 'cc-mode #'(define-key c++-mode-map (kbd "M-j") nil))
+(eval-after-load 'cc-mode #'(define-key c++-mode-map (kbd "M-l") nil))
+(eval-after-load 'cc-mode #'(define-key c++-mode-map (kbd "M-i") nil))
+(eval-after-load 'cc-mode #'(define-key c++-mode-map (kbd "M-k") nil))
+(global-set-key (kbd "M-j") 'windmove-left)
+(global-set-key (kbd "M-l") 'windmove-right)
+(global-set-key (kbd "M-i") 'windmove-up)
+(global-set-key (kbd "M-k") 'windmove-down)
 
 ;; Buffer-move
 (require 'buffer-move)
@@ -214,8 +220,12 @@
 ;; Flycheck
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
-(global-set-key (kbd "C-x C-n") 'flycheck-next-error)
-(global-set-key (kbd "C-x C-p") 'flycheck-previous-error)
+(eval-after-load 'cc-mode
+  #'(define-key c++-mode-map (kbd "C-c C-p") nil))
+(eval-after-load 'cc-mode
+  #'(define-key c++-mode-map (kbd "C-c C-n") nil))
+(global-set-key (kbd "C-c C-n") 'flycheck-next-error)
+(global-set-key (kbd "C-c C-p") 'flycheck-previous-error)
 
 ;; (setq c++-mode-hook nil)
 (add-hook 'c++-mode-hook

@@ -69,6 +69,10 @@
 ;; Reloading buffer from disk
 (global-set-key (kbd "C-x C-r") 'revert-buffer)
 
+;; Hide Show
+(add-hook 'c-mode-common-hook 'hs-minor-mode)
+(global-set-key (kbd"C-v") 'hs-toggle-hiding)
+
 ;; Matching parenthesis
 (setq show-paren-delay 0)
 (show-paren-mode 1)

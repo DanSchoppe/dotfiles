@@ -160,6 +160,13 @@ fi
 alias ls='ls -lahGF'
 alias cls='printf "\033c"'
 
+if [[ ${PLATFORM} == "linux" ]]; then
+    alias gitx='gitg'
+fi
+if [[ ${PLATFORM} == "osx" ]]; then
+    alias gitg = 'gitx'
+fi
+
 #-------------------------------------------------------------------------------
 # Prompt text
 #-------------------------------------------------------------------------------

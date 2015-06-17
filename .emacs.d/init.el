@@ -16,6 +16,7 @@
 	flycheck
 	magit
 	multiple-cursors
+	popup
 	projectile
 	rtags
 	undo-tree
@@ -237,6 +238,20 @@
 (require 'rtags)
 (global-set-key (kbd "M-RET") 'rtags-find-symbol-at-point)
 
+;; Company-rtags autocomplete
+(require 'company-rtags)
+(add-to-list 'company-backends 'company-rtags)
+(setq company-idle-delay 0)
+(setq company-rtags-begin-after-member-access t)
+(setq company-minimum-prefix-length 1)
+(setq rtags-completions-enabled t)
+(setq rtags-display-current-error-as-tooltip t)
+(rtags-diagnostics)
+(global-set-key (kbd "<C-return>") 'company-complete)
+
+;; Company mode
+(add-hook 'after-init-hook 'global-company-mode)
+
 ;; Flycheck
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -297,21 +312,6 @@
 ;;;; trigger completion at interesting places, such as after scope operator
 ;;;;     std::|
 ;;(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
-
-;; Company-rtags
-(eval-after-load 'company
-  '(add-to-list 'company-backends 'company-rtags))
-(setq rtags-completions-enabled t)
-(global-set-key (kbd "<C-return>") 'company-complete)
-
-;; Company mode
-(add-hook 'after-init-hook 'global-company-mode)
-
-
-
-
-
-
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

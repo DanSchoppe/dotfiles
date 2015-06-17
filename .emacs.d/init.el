@@ -1,5 +1,46 @@
 ;;; Dan Schoppe's Emacs init / configuration file
 
+;; Installed packages
+(setq package-enable-at-startup nil)
+(setq auto-installed-packages
+      '(ace-jump-mode
+	ag
+	autopair
+	buffer-move
+	color-theme
+	company
+	company-irony
+	exec-path-from-shell
+	flx
+	flx-ido
+	flycheck
+	magit
+	multiple-cursors
+	projectile
+	rtags
+	undo-tree
+	))
+
+;; Melpa
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+
+;; Activate all the packages
+(package-initialize)
+
+;; Fetch the list of packages available
+(or (file-exists-p package-user-dir)
+    (package-refresh-contents))
+
+;; Install the missing packages
+(dolist (package auto-installed-packages)
+  (unless (package-installed-p package)
+    (package-install package)))
+
 ;; Save Emacs Sessions
 (desktop-save-mode 1)
 
@@ -20,29 +61,11 @@
  '(js3-pretty-vars nil)
  '(js3-strict-trailing-comma-warning nil))
 
-;; Packages
-(package-initialize)
-(setq package-enable-at-startup nil)
-(setq auto-installed-packages
-      '(ace-jump-mode
-	autopair
-	buffer-move
-	color-theme
-	company
-	company-irony
-	irony-mode
-	exec-path-from-shell
-	flx-ido
-	flycheck
-	magit
-	multiple-cursors
-	projectile
-	rtags
-	undo-tree
-	))
-
 ;; Save Emacs Sessions
 (desktop-save-mode 1)
+
+;; Enable clipboard integration
+(setq x-select-enable-clipboard t)
 
 ;; Tabs
 (setq indent-tabs-mode nil)
@@ -121,18 +144,11 @@
 (setq org-src-fontify-natively t)
 (setq org-src-window-setup (quote current-window))
 (setq org-src-ask-before-returning-to-edit-buffer nil)
+(setq org-startup-indented t)
+(setq org-startup-truncated nil)
 
 ;; Set PATH
 (exec-path-from-shell-initialize)
-
-;; Melpa
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
-(when (< emacs-major-version 24)
-  ;; For important compatibility libraries like cl-lib
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-(package-initialize)
 
 ;; Dired Extra library (C-x C-j for instance)
 (add-hook 'dired-load-hook
@@ -238,7 +254,7 @@
             (c-set-offset 'innamespace 0)
             (setq tab-width 2)
             (setq indent-tabs-mode nil)
-            (setq flycheck-check-syntax-automatically
+            (setq flycheck-check-syntax-autonmatically
                   '(mode-enabled new-line save idle-change))
 	    (setq flycheck-idle-change-delay 0.1)
             (setq flycheck-clang-language-standard "c++1y")
@@ -251,7 +267,12 @@
                     "/Users/danschoppe/Code/core/dex/external"
                     "/Users/danschoppe/Code/core/dex/build/debug"
                     "/Users/danschoppe/Code/core/dex/OSX/deps"
-                    "/Users/danschoppe/Code/core/dex/build/msgpack/include"))))
+                    "/Users/danschoppe/Code/core/dex/build/msgpack/include"
+		    "/usr/include/c++/v1"
+		    "/home/dan/Code/core/dex/src"
+		    "/home/dan/Code/core/dex/external"
+		    "/home/dan/Code/core/dex/build/debug"
+		    "/home/dan/Code/core/dex/build/msgpack/include"))))
 
 
 ;;;; irony-mode smart auto-completion

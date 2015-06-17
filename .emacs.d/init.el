@@ -269,7 +269,7 @@
             (c-set-offset 'innamespace 0)
             (setq tab-width 2)
             (setq indent-tabs-mode nil)
-            (setq flycheck-check-syntax-autonmatically
+            (setq flycheck-check-syntax-automatically
                   '(mode-enabled new-line save idle-change))
 	    (setq flycheck-idle-change-delay 0.1)
             (setq flycheck-clang-language-standard "c++1y")

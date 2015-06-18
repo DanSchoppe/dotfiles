@@ -5,14 +5,17 @@
       '(
 	autopair-insert-opening
 	autopair-newline
+	autopair-skip-close-maybe
 	beginning-of-buffer
 	c-electric-brace
 	c-electric-delete-forward
 	c-electric-lt-gt
 	c-electric-semi&comma
 	c-electric-slash
+	delete-horizontal-space
 	electric-newline-and-maybe-indent
 	kill-region
+	org-cycle
 	org-delete-char
 	org-end-of-line
 	org-self-insert-command
@@ -20,5 +23,6 @@
 
 (setq mc/cmds-to-run-once
       '(
+	info-emacs-manual
 	org-edit-src-save
 	))

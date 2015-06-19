@@ -162,6 +162,8 @@ alias cls='printf "\033c"'
 
 if [[ ${PLATFORM} == "linux" ]]; then
     alias gitx='gitg'
+    alias rebootL='sudo grub-reboot 0; sudo reboot'
+    alias rebootW='sudo grub-reboot 2; sudo reboot'
 fi
 if [[ ${PLATFORM} == "osx" ]]; then
     alias gitg = 'gitx'

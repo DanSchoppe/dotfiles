@@ -42,6 +42,12 @@
   (unless (package-installed-p package)
     (package-install package)))
 
+;; Disable top tool-bar
+(tool-bar-mode -1)
+
+;; Auto-revert buffers if updated on disk
+(global-auto-revert-mode t)
+
 ;; Save Emacs Sessions
 (desktop-save-mode 1)
 
@@ -139,6 +145,9 @@
 
 ;; Org mode
 (require 'org)
+(add-hook 'org-mode-hook
+          (lambda ()
+	    (local-set-key  (kbd "C-v") 'org-cycle)))
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
@@ -239,15 +248,15 @@
 (global-set-key (kbd "M-RET") 'rtags-find-symbol-at-point)
 
 ;; Company-rtags autocomplete
-(require 'company-rtags)
-(add-to-list 'company-backends 'company-rtags)
-(setq company-idle-delay 0)
-(setq company-rtags-begin-after-member-access t)
-(setq company-minimum-prefix-length 1)
-(setq rtags-completions-enabled t)
-(setq rtags-display-current-error-as-tooltip t)
-(rtags-diagnostics)
-(global-set-key (kbd "<C-return>") 'company-complete)
+;; (require 'company-rtags)
+;; (add-to-list 'company-backends 'company-rtags)
+;; (setq company-idle-delay 0)
+;; (setq company-rtags-begin-after-member-access t)
+;; (setq company-minimum-prefix-length 1)
+;; (setq rtags-completions-enabled t)
+;; (setq rtags-display-current-error-as-tooltip t)
+;; (rtags-diagnostics)
+;; (global-set-key (kbd "<C-return>") 'company-complete)
 
 ;; Company mode
 (add-hook 'after-init-hook 'global-company-mode)
@@ -272,14 +281,18 @@
             (setq flycheck-check-syntax-automatically
                   '(mode-enabled new-line save idle-change))
 	    (setq flycheck-idle-change-delay 0.1)
+	    (setq flycheck-display-errors-delay 0)
             (setq flycheck-clang-language-standard "c++1y")
             (setq flycheck-clang-standard-library "libc++")
+	    (setq flycheck-clang-args
+		  '("-ferror-limit=123"))
             (setq flycheck-clang-include-path
-                  '("/Users/danschoppe/local/Cellar/llvm/3.5.1/include/c++/v1"
+                  '("/Users/danschoppe/local/Cellar/llvm/3.5.1/include/c++/v1/"
 		    "/Users/danschoppe/local/include"
                     "/Users/danschoppe/local/include/libxml2"
                     "/Users/danschoppe/Code/core/dex/src"
                     "/Users/danschoppe/Code/core/dex/external"
+                    "/Users/danschoppe/Code/core/dex/external/lz4"
                     "/Users/danschoppe/Code/core/dex/build/debug"
                     "/Users/danschoppe/Code/core/dex/OSX/deps"
                     "/Users/danschoppe/Code/core/dex/build/msgpack/include"

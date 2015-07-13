@@ -146,6 +146,7 @@ fi
 #-------------------------------------------------------------------------------
 if [[ ${PLATFORM} == "osx" ]]; then
     export PATH=$HOME/local/bin:$PATH
+    export PATH=$HOME/Code/Scripts:$PATH
     export PATH=$PATH:$HOME/local/Cellar/llvm/3.5.1/bin
     export PATH=$PATH:$HOME/Code/rtags/bin
     export PATH=$PATH:$HOME/Applications
@@ -166,7 +167,7 @@ if [[ ${PLATFORM} == "linux" ]]; then
     alias rebootW='sudo grub-reboot 2; sudo reboot'
 fi
 if [[ ${PLATFORM} == "osx" ]]; then
-    alias gitg = 'gitx'
+    alias gitg='gitx'
 fi
 
 #-------------------------------------------------------------------------------

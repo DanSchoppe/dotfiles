@@ -8,10 +8,12 @@
 	autopair-skip-close-maybe
 	beginning-of-buffer
 	c-electric-brace
+	c-electric-colon
 	c-electric-delete-forward
 	c-electric-lt-gt
 	c-electric-semi&comma
 	c-electric-slash
+	c-indent-line-or-region
 	delete-horizontal-space
 	electric-newline-and-maybe-indent
 	kill-region

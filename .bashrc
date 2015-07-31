@@ -147,9 +147,8 @@ fi
 if [[ ${PLATFORM} == "osx" ]]; then
     export PATH=$HOME/local/bin:$PATH
     export PATH=$HOME/Code/Scripts:$PATH
-    export PATH=$PATH:$HOME/local/Cellar/llvm/3.5.1/bin
-    export PATH=$PATH:$HOME/Code/rtags/bin
-    export PATH=$PATH:$HOME/Applications
+    export PATH=$HOME/Applications:$PATH
+    export PATH=$HOME/local/opt/llvm/bin:$PATH
     export EDITOR=$HOME/local/bin/emacs
 # elif [[ ${PLATFORM} == "linux" ]]; then
 fi

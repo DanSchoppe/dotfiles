@@ -8,18 +8,19 @@
 	autopair
 	buffer-move
 	color-theme
-	company
-	company-irony
+  company
 	exec-path-from-shell
 	flx
 	flx-ido
-	flycheck
+	;; flycheck
 	magit
 	multiple-cursors
 	popup
 	projectile
 	rtags
 	undo-tree
+	visual-regexp
+	visual-regexp-steroids
 	))
 
 ;; Melpa
@@ -83,7 +84,7 @@
 (setq show-trailing-whitespace 1)
 
 ;; Text size
-(set-face-attribute 'default nil :height 95) ;; value in 1/10pt, so 100 will be 10pt font
+(set-face-attribute 'default nil :height 110) ;; value in 1/10pt, so 100 will be 10pt font
 
 ;; Show line and column numbers
 (setq line-number-mode t)
@@ -245,31 +246,51 @@
 
 ;; RTags
 (require 'rtags)
+(rtags-enable-standard-keybindings)
+
+;; RTags symbols
 (global-set-key (kbd "M-RET") 'rtags-find-symbol-at-point)
+(setq rtags-tracking t)
+
+;; RTags error checking
+(rtags-diagnostics)
+(setq rtags-display-current-error-as-tooltip t)
+;; (setq rtags-track-container t)
+(setq rtags-error-timer-interval 0)
+(set-face-attribute 'rtags-errline nil
+                    :background nil
+                    :underline '(:color "red" :style wave))
+(set-face-attribute 'rtags-fixitline nil
+                    :background nil
+                    :underline '(:color "Magenta" :style wave))
+(set-face-attribute 'rtags-skippedline nil
+                    :background nil
+                    :foreground "windowFrameColor")
+(set-face-attribute 'rtags-warnline nil
+                    :background nil
+                    :underline '(:color "Orange" :style wave))
 
 ;; Company-rtags autocomplete
-;; (require 'company-rtags)
-;; (add-to-list 'company-backends 'company-rtags)
-;; (setq company-idle-delay 0)
-;; (setq company-rtags-begin-after-member-access t)
-;; (setq company-minimum-prefix-length 1)
-;; (setq rtags-completions-enabled t)
-;; (setq rtags-display-current-error-as-tooltip t)
-;; (rtags-diagnostics)
-;; (global-set-key (kbd "<C-return>") 'company-complete)
+(require 'company-rtags)
+(add-to-list 'company-backends 'company-rtags)
+(setq company-idle-delay 0)
+(setq company-rtags-begin-after-member-access t)
+(setq company-minimum-prefix-length 1)
+(setq rtags-completions-enabled t)
+(global-set-key (kbd "<C-return>") 'company-complete)
 
 ;; Company mode
 (add-hook 'after-init-hook 'global-company-mode)
 
 ;; Flycheck
-(require 'flycheck)
-(add-hook 'after-init-hook #'global-flycheck-mode)
-(eval-after-load 'cc-mode
-  #'(define-key c++-mode-map (kbd "C-c C-p") nil))
-(eval-after-load 'cc-mode
-  #'(define-key c++-mode-map (kbd "C-c C-n") nil))
-(global-set-key (kbd "C-c C-n") 'flycheck-next-error)
-(global-set-key (kbd "C-c C-p") 'flycheck-previous-error)
+;; (require 'flycheck)
+;; (add-hook 'after-init-hook #'global-flycheck-mode)
+;; (eval-after-load 'cc-mode
+;;   #'(define-key c++-mode-map (kbd "C-c C-p") nil))
+;; (eval-after-load 'cc-mode
+;;   #'(define-key c++-mode-map (kbd "C-c C-n") nil))
+;; (global-set-key (kbd "C-c C-n") 'flycheck-next-error)
+;; (global-set-key (kbd "C-c C-p") 'flycheck-previous-error)
 
 ;; (setq c++-mode-hook nil)
 (add-hook 'c++-mode-hook
@@ -277,54 +298,30 @@
             (setq c-basic-offset 2)
             (c-set-offset 'innamespace 0)
             (setq tab-width 2)
-            (setq indent-tabs-mode nil)
-            (setq flycheck-check-syntax-automatically
-                  '(mode-enabled new-line save idle-change))
-	    (setq flycheck-idle-change-delay 0.1)
-	    (setq flycheck-display-errors-delay 0)
-            (setq flycheck-clang-language-standard "c++1y")
-            (setq flycheck-clang-standard-library "libc++")
-	    (setq flycheck-clang-args
-		  '("-ferror-limit=123"))
-            (setq flycheck-clang-include-path
-                  '("/Users/danschoppe/local/Cellar/llvm/3.5.1/include/c++/v1/"
-		    "/Users/danschoppe/local/include"
-                    "/Users/danschoppe/local/include/libxml2"
-                    "/Users/danschoppe/Code/core/dex/src"
-                    "/Users/danschoppe/Code/core/dex/external"
-                    "/Users/danschoppe/Code/core/dex/external/lz4"
-                    "/Users/danschoppe/Code/core/dex/build/debug"
-                    "/Users/danschoppe/Code/core/dex/OSX/deps"
-                    "/Users/danschoppe/Code/core/dex/build/msgpack/include"
-		    "/usr/include/c++/v1"
-		    "/home/dan/Code/core/dex/src"
-		    "/home/dan/Code/core/dex/external"
-		    "/home/dan/Code/core/dex/build/debug"
-		    "/home/dan/Code/core/dex/build/msgpack/include"))))
-
-
-;;;; irony-mode smart auto-completion
-;;(add-hook 'c++-mode-hook 'irony-mode)
-;;(add-hook 'c-mode-hook 'irony-mode)
-;;(add-hook 'objc-mode-hook 'irony-mode)
-;;;; replace the `completion-at-point' and `complete-symbol' bindings in
-;;;; irony-mode's buffers by irony-mode's function
-;;(defun my-irony-mode-hook ()
-;;  (define-key irony-mode-map [remap completion-at-point]
-;;    'irony-completion-at-point-async)
-;;  (define-key irony-mode-map [remap complete-symbol]
-;;    'irony-completion-at-point-async))
-;;(add-hook 'irony-mode-hook 'my-irony-mode-hook)
-;;(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-;;(global-set-key (kbd "<C-return>") 'company-complete)
-;;
-;;;; company-irony completion backend for irony-mode
-;;(eval-after-load 'company
-;;  '(add-to-list 'company-backends 'company-irony))
-;;;; (optional) adds CC special commands to `company-begin-commands' in order to
-;;;; trigger completion at interesting places, such as after scope operator
-;;;;     std::|
-;;(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+            (setq indent-tabs-mode nil)))
+            ;; (setq flycheck-check-syntax-automatically
+            ;;       '(mode-enabled new-line save idle-change))
+	    ;; (setq flycheck-idle-change-delay 0.1)
+	    ;; (setq flycheck-display-errors-delay 0)
+            ;; (setq flycheck-clang-language-standard "c++1y")
+            ;; (setq flycheck-clang-standard-library "libc++")
+	    ;; (setq flycheck-clang-args
+	    ;; 	  '("-ferror-limit=123"))
+            ;; (setq flycheck-clang-include-path
+            ;;       '("/Users/danschoppe/local/Cellar/llvm/3.5.1/include/c++/v1/"
+	    ;; 	    "/Users/danschoppe/local/include"
+            ;;         "/Users/danschoppe/local/include/libxml2"
+            ;;         "/Users/danschoppe/Code/core/dex/src"
+            ;;         "/Users/danschoppe/Code/core/dex/external"
+            ;;         "/Users/danschoppe/Code/core/dex/external/lz4"
+            ;;         "/Users/danschoppe/Code/core/dex/build/debug"
+            ;;         "/Users/danschoppe/Code/core/dex/OSX/deps"
+            ;;         "/Users/danschoppe/Code/core/dex/build/msgpack/include"
+	    ;; 	    "/usr/include/c++/v1"
+	    ;; 	    "/home/dan/Code/core/dex/src"
+	    ;; 	    "/home/dan/Code/core/dex/external"
+	    ;; 	    "/home/dan/Code/core/dex/build/debug"
+	    ;; 	    "/home/dan/Code/core/dex/build/msgpack/include"))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

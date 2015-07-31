@@ -3,6 +3,8 @@
 
 # git stuff
 !.gitignore
+!.gitconfig
+!.gitignore_global
 
 # Shell config
 !.bashrc

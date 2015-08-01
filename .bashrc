@@ -168,6 +168,9 @@ if [[ ${PLATFORM} == "linux" ]]; then
     alias gitx='gitg'
     alias rebootL='sudo grub-reboot 0; sudo reboot'
     alias rebootW='sudo grub-reboot 2; sudo reboot'
+    if [[ $HOSTNAME = "onyx" ]]; then
+	alias 'nvidia'='sudo prime-select'
+    fi
 fi
 if [[ ${PLATFORM} == "osx" ]]; then
     alias gitg='gitx'

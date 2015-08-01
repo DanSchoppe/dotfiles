@@ -144,13 +144,17 @@ fi
 #-------------------------------------------------------------------------------
 # Paths
 #-------------------------------------------------------------------------------
+
+export PATH=$HOME/Code/Scripts:$PATH
+export PATH=$PATH:$HOME/Applications
+
 if [[ ${PLATFORM} == "osx" ]]; then
     export PATH=$HOME/local/bin:$PATH
-    export PATH=$HOME/Code/Scripts:$PATH
-    export PATH=$HOME/Applications:$PATH
     export PATH=$HOME/local/opt/llvm/bin:$PATH
     export EDITOR=$HOME/local/bin/emacs
-# elif [[ ${PLATFORM} == "linux" ]]; then
+elif [[ ${PLATFORM} == "linux" ]]; then
+    export ANDROID_HOME=~/Code/android-studio/tools/android-sdk-linux
+    . ~/Code/Scripts/nvm.sh
 fi
 
 

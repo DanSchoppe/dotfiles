@@ -1,5 +1,8 @@
 ;;; Dan Schoppe's Emacs init / configuration file
 
+;; load-path
+(add-to-list 'load-path "~/.emacs.d/external")
+
 ;; Installed packages
 (setq package-enable-at-startup nil)
 (setq auto-installed-packages
@@ -8,15 +11,17 @@
 	autopair
 	buffer-move
 	color-theme
-  company
+	company
 	exec-path-from-shell
 	flx
 	flx-ido
 	;; flycheck
+	git-gutter
 	magit
 	multiple-cursors
 	popup
 	projectile
+	realgud
 	rtags
 	undo-tree
 	visual-regexp
@@ -43,6 +48,9 @@
   (unless (package-installed-p package)
     (package-install package)))
 
+;; Load external libraries
+(load "gud-lldb.el")
+
 ;; Disable top tool-bar
 (tool-bar-mode -1)
 
@@ -58,6 +66,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(compilation-scroll-output (quote first-error))
  '(inhibit-startup-screen t)
  '(js3-auto-indent-p t)
  '(js3-consistent-level-indent-inner-bracket nil)
@@ -86,14 +95,38 @@
 ;; Text size
 (set-face-attribute 'default nil :height 110) ;; value in 1/10pt, so 100 will be 10pt font
 
+;; Clean up mode-line
+(when (require 'diminish nil 'noerror)
+  (eval-after-load "company"
+    '(diminish 'company-mode ""))
+  (eval-after-load "hideshow"
+    '(diminish 'hs-minor-mode ""))
+  (eval-after-load "autopair"
+    '(diminish 'autopair-mode ""))
+  (eval-after-load "projectile"
+    '(diminish 'projectile-mode ""))
+  (eval-after-load "undo-tree"
+    '(diminish 'undo-tree-mode ""))
+  (eval-after-load "abbrev"
+    '(diminish 'abbrev-mode ""))
+  (eval-after-load "git-gutter"
+    '(diminish 'git-gutter-mode "")))
+(setq vc-handled-backends ())
+
 ;; Show line and column numbers
 (setq line-number-mode t)
 (setq column-number-mode t)
+
+;; Show current function
+(which-func-mode 1)
 
 ;; Word navigation for camelCase
 (global-subword-mode 1)
 
 ;; Scrolling
+(setq mouse-wheel-scroll-amount '(3 ((shift) . 1))) ;; one line at a time
+(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 (global-set-key "\M-n"  (lambda () (interactive) (scroll-up   4)) )
 (global-set-key "\M-p"  (lambda () (interactive) (scroll-down 4)) )
 
@@ -207,6 +240,19 @@
 (global-set-key (kbd "M-i") 'windmove-up)
 (global-set-key (kbd "M-k") 'windmove-down)
 
+;; Toggle window dedication (similar to sticky-windows)
+(defun toggle-window-dedicated ()
+  "Toggle whether the current active window is dedicated or not"
+  (interactive)
+  (message
+   (if (let (window (get-buffer-window (current-buffer)))
+	 (set-window-dedicated-p window
+				 (not (window-dedicated-p window))))
+       "Window '%s' is dedicated"
+     "Window '%s' is normal")
+   (current-buffer)))
+(global-set-key [pause] 'toggle-window-dedicated)
+
 ;; Buffer-move
 (require 'buffer-move)
 (global-set-key (kbd "M-S-<up>") 'buf-move-up)
@@ -240,6 +286,10 @@
 (autopair-global-mode 1)
 (setq autopair-autowrap t)
 
+;; git-gutter
+(global-git-gutter-mode +1)
+(setq git-gutter:update-interval 1)
+
 ;; Magit (git)
 (require 'magit)
 (setq magit-last-seen-setup-instructions "1.4.0")
@@ -254,6 +304,12 @@
 
 ;; RTags error checking
 (rtags-diagnostics)
+(eval-after-load 'cc-mode
+  #'(define-key c++-mode-map (kbd "C-c C-p") nil))
+(eval-after-load 'cc-mode
+  #'(define-key c++-mode-map (kbd "C-c C-n") nil))
+(global-set-key (kbd "C-c C-n") 'rtags-next-diag)
+(global-set-key (kbd "C-c C-p") 'rtags-previous-diag)
 (setq rtags-display-current-error-as-tooltip t)
 ;; (setq rtags-track-container t)
 (setq rtags-error-timer-interval 0)
@@ -328,5 +384,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(term ((t (:inherit default)))))
+ '(term ((t (:inherit default))))
+ '(which-func ((t nil))))
 (put 'erase-buffer 'disabled nil)

@@ -145,12 +145,12 @@ fi
 # Paths
 #-------------------------------------------------------------------------------
 
-export PATH=$HOME/Code/Scripts:$PATH
+export PATH=$PATH:$HOME/Code/Scripts
 export PATH=$PATH:$HOME/Applications
 
 if [[ ${PLATFORM} == "osx" ]]; then
     export PATH=$HOME/local/bin:$PATH
-    export PATH=$HOME/local/opt/llvm/bin:$PATH
+    export PATH=$PATH:$HOME/local/opt/llvm36/lib/llvm-3.6/bin
     export EDITOR=$HOME/local/bin/emacs
 elif [[ ${PLATFORM} == "linux" ]]; then
     export ANDROID_HOME=~/Code/android-studio/tools/android-sdk-linux

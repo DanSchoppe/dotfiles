@@ -95,6 +95,11 @@
 ;; Text size
 (set-face-attribute 'default nil :height 110) ;; value in 1/10pt, so 100 will be 10pt font
 
+;; Indent guide (vertical indentation indicators)
+(set-face-attribute 'indent-guide-face nil
+		    :foreground "RoyalBlue1")
+(setq indent-guide-recursive t)
+
 ;; Clean up mode-line
 (when (require 'diminish nil 'noerror)
   (eval-after-load "company"

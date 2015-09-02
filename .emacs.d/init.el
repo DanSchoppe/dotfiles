@@ -17,6 +17,7 @@
 	flx-ido
 	;; flycheck
 	git-gutter
+	indent-guide
 	magit
 	multiple-cursors
 	popup

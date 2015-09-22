@@ -52,6 +52,14 @@
 ;; Load external libraries
 (load "gud-lldb.el")
 
+;; Aliases
+(defalias 'yes-or-no-p 'y-or-n-p) ; y or n is enough
+(defalias 'list-buffers 'ibuffer) ; always use ibuffer
+(defalias 'perl-mode 'cperl-mode) ; always use cperl-mode
+
+(defalias 'select-all 'mark-whole-buffer)
+(global-set-key (kbd "C-x C-a") 'select-all)
+
 ;; Disable top tool-bar
 (tool-bar-mode -1)
 
@@ -97,8 +105,8 @@
 (set-face-attribute 'default nil :height 110) ;; value in 1/10pt, so 100 will be 10pt font
 
 ;; Indent guide (vertical indentation indicators)
-(set-face-attribute 'indent-guide-face nil
-		    :foreground "RoyalBlue1")
+;; (set-face-attribute 'indent-guide-face nil
+;; 		    :foreground "RoyalBlue1")
 (setq indent-guide-recursive t)
 
 ;; Clean up mode-line
@@ -138,6 +146,12 @@
 
 ;; Reloading buffer from disk
 (global-set-key (kbd "C-x C-r") 'revert-buffer)
+
+;; Locking buffer to window
+(define-minor-mode sticky-buffer-mode
+  "Make the current window always display this buffer."
+  nil "" nil
+  (set-window-dedicated-p (selected-window) sticky-buffer-mode))
 
 ;; Hide Show
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
@@ -335,7 +349,7 @@
 ;; Company-rtags autocomplete
 (require 'company-rtags)
 (add-to-list 'company-backends 'company-rtags)
-(setq company-idle-delay 0)
+(setq company-idle-delay 1)
 (setq company-rtags-begin-after-member-access t)
 (setq company-minimum-prefix-length 1)
 (setq rtags-completions-enabled t)

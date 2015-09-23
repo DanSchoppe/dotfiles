@@ -58,7 +58,7 @@
 (defalias 'perl-mode 'cperl-mode) ; always use cperl-mode
 
 (defalias 'select-all 'mark-whole-buffer)
-(global-set-key (kbd "C-x C-a") 'select-all)
+(global-set-key (kbd "C-x a") 'select-all)
 
 ;; Disable top tool-bar
 (tool-bar-mode -1)

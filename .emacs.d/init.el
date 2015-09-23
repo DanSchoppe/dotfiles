@@ -22,7 +22,7 @@
 	multiple-cursors
 	popup
 	projectile
-	realgud
+	;; realgud
 	rtags
 	undo-tree
 	visual-regexp
@@ -68,6 +68,9 @@
 
 ;; Save Emacs Sessions
 (desktop-save-mode 1)
+
+;; Enable winner-mode for cycling through window layouts
+(winner-mode 1)
 
 ;; Disable startup screen
 (custom-set-variables

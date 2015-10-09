@@ -27,6 +27,7 @@
 	undo-tree
 	visual-regexp
 	visual-regexp-steroids
+	web-mode
 	))
 
 ;; Melpa

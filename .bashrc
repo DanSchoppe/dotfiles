@@ -151,6 +151,7 @@ export PATH=$PATH:$HOME/Applications
 if [[ ${PLATFORM} == "osx" ]]; then
     export PATH=$HOME/local/bin:$PATH
     export PATH=$PATH:$HOME/local/opt/llvm36/lib/llvm-3.6/bin
+    export PATH=$PATH:$HOME/.gem/ruby/2.0.0/bin
     export EDITOR=$HOME/local/bin/emacs
 elif [[ ${PLATFORM} == "linux" ]]; then
     export ANDROID_HOME=~/Code/android-studio/tools/android-sdk-linux

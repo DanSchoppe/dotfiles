@@ -22,11 +22,14 @@
 	org-cycle
 	org-delete-char
 	org-end-of-line
+	org-force-self-insert
+	org-kill-line
 	org-self-insert-command
 	))
 
 (setq mc/cmds-to-run-once
       '(
+	company-complete
 	info-emacs-manual
 	org-edit-src-save
 	))

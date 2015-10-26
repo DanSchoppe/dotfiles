@@ -17,6 +17,7 @@
 	flx-ido
 	;; flycheck
 	git-gutter
+	icicles
 	indent-guide
 	magit
 	multiple-cursors
@@ -54,7 +55,7 @@
 (load "gud-lldb.el")
 
 ;; Aliases
-(defalias 'yes-or-no-p 'y-or-n-p) ; y or n is enough
+;; (defalias 'yes-or-no-p 'y-or-n-p) ; y or n is enough
 (defalias 'list-buffers 'ibuffer) ; always use ibuffer
 (defalias 'perl-mode 'cperl-mode) ; always use cperl-mode
 
@@ -324,6 +325,7 @@
 
 ;; RTags symbols
 (global-set-key (kbd "M-RET") 'rtags-find-symbol-at-point)
+(global-set-key (kbd "C-c r r") 'rtags-reparse-file)
 (setq rtags-tracking t)
 
 ;; RTags error checking

@@ -1,6 +1,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
 [alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	# Source: https://codingkilledthecat.wordpress.com/2012/04/27/git-stash-pop-considered-harmful/
 	save = !sh -c 'export PREV=$(git symbolic-ref HEAD|cut -d/ -f3-) && git checkout -b "$1" && git commit -am "$1" && git checkout "$PREV"' -
 [include]

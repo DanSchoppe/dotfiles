@@ -109,6 +109,9 @@
 ;; Text size
 (set-face-attribute 'default nil :height 110) ;; value in 1/10pt, so 100 will be 10pt font
 
+;; Disable wrapped lines
+(set-default 'truncate-lines t)
+
 ;; Indent guide (vertical indentation indicators)
 ;; (set-face-attribute 'indent-guide-face nil
 ;; 		    :foreground "RoyalBlue1")
@@ -244,6 +247,7 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-c |") 'mc/vertical-align-with-space)
 
 ;; Window resize
 (global-set-key (kbd "M-<left>") 'shrink-window-horizontally)

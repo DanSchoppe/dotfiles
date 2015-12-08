@@ -19,6 +19,7 @@
 	git-gutter
 	icicles
 	indent-guide
+	keyfreq
 	magit
 	multiple-cursors
 	popup
@@ -70,6 +71,12 @@
 
 ;; Save Emacs Sessions
 (desktop-save-mode 1)
+
+;; Save Emacs statistics
+(require 'keyfreq)
+(keyfreq-mode 1)
+(keyfreq-autosave-mode 1)
+;; M-x keyfreq-show to display statistics
 
 ;; Enable winner-mode for cycling through window layouts
 (winner-mode 1)
@@ -223,15 +230,16 @@
 (exec-path-from-shell-initialize)
 
 ;; Dired Extra library (C-x C-j for instance)
-(add-hook 'dired-load-hook
-	  (function (lambda () (load "dired-x"))))
+(require 'dired-x)
+; Load Dired X when Dired is loaded:
+(add-hook 'dired-load-hook '(lambda () (require 'dired-x)))
+(setq dired-omit-mode t) ; Turn on Omit mode.
 
 ;; Undo tree
 (require 'undo-tree)
 (global-undo-tree-mode 1)
 
 ;; Ace jump (Quick Emacs cursor navigation)
-(add-to-list 'load-path "~/emacs.d/elpa/ace-jump-mode-20140616.115/")
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
@@ -284,10 +292,10 @@
 
 ;; Buffer-move
 (require 'buffer-move)
-(global-set-key (kbd "M-S-<up>") 'buf-move-up)
-(global-set-key (kbd "M-S-<down>")   'buf-move-down)
-(global-set-key (kbd "M-S-<left>")   'buf-move-left)
-(global-set-key (kbd "M-S-<right>")  'buf-move-right)
+(global-set-key (kbd "C-M-i") 'buf-move-up)
+(global-set-key (kbd "C-M-k")   'buf-move-down)
+(global-set-key (kbd "C-M-j")   'buf-move-left)
+(global-set-key (kbd "C-M-l")  'buf-move-right)
 
 ;; Projectile (project definition)
 (projectile-global-mode)
@@ -328,7 +336,8 @@
 (rtags-enable-standard-keybindings)
 
 ;; RTags symbols
-(global-set-key (kbd "M-RET") 'rtags-find-symbol-at-point)
+(global-set-key (kbd "M-<return>") 'rtags-find-symbol-at-point)
+(global-set-key (kbd "C-M-<return>") 'rtags-find-references-at-point)
 (global-set-key (kbd "C-c r r") 'rtags-reparse-file)
 (setq rtags-tracking t)
 
@@ -363,7 +372,7 @@
 (setq company-rtags-begin-after-member-access t)
 (setq company-minimum-prefix-length 1)
 (setq rtags-completions-enabled t)
-(global-set-key (kbd "<C-return>") 'company-complete)
+(global-set-key (kbd "C-<return>") 'company-complete)
 
 ;; Company mode
 (add-hook 'after-init-hook 'global-company-mode)

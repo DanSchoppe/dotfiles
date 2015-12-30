@@ -330,6 +330,12 @@
 (autopair-global-mode 1)
 (setq autopair-autowrap t)
 
+;; Case insensitive line sorting
+(defun sort-lines-nocase ()
+  (interactive)
+  (let ((sort-fold-case t))
+    (call-interactively 'sort-lines)))
+
 ;; git-gutter
 (global-git-gutter-mode +1)
 (setq git-gutter:update-interval 1)

@@ -271,10 +271,6 @@
 (global-set-key (kbd "M-<up>") 'enlarge-window)
 
 ;; Window navigation
-;; (global-set-key (kbd "S-<left>") 'windmove-left)
-;; (global-set-key (kbd "S-<right>") 'windmove-right)
-;; (global-set-key (kbd "S-<up>") 'windmove-up)
-;; (global-set-key (kbd "S-<down>") 'windmove-down)
 (eval-after-load 'cc-mode #'(define-key c++-mode-map (kbd "M-j") nil))
 (eval-after-load 'cc-mode #'(define-key c++-mode-map (kbd "M-l") nil))
 (eval-after-load 'cc-mode #'(define-key c++-mode-map (kbd "M-i") nil))

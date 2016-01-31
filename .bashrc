@@ -154,6 +154,8 @@ if [[ ${PLATFORM} == "osx" ]]; then
     export PATH=$PATH:$HOME/.gem/ruby/2.0.0/bin
     export EDITOR=$HOME/local/bin/emacs
 elif [[ ${PLATFORM} == "linux" ]]; then
+    export CC=/usr/bin/clang
+    export CXX=/usr/bin/clang++
     export ANDROID_HOME=~/Code/android-studio/tools/android-sdk-linux
     . ~/Code/Scripts/nvm.sh
 fi

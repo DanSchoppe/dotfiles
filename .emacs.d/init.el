@@ -15,7 +15,7 @@
 	exec-path-from-shell
 	flx
 	flx-ido
-	;; flycheck
+	flycheck
 	git-gutter
 	icicles
 	indent-guide
@@ -122,7 +122,7 @@
 ;; Indent guide (vertical indentation indicators)
 ;; (set-face-attribute 'indent-guide-face nil
 ;; 		    :foreground "RoyalBlue1")
-(setq indent-guide-recursive t)
+;; (setq indent-guide-recursive t)
 
 ;; Clean up mode-line
 (when (require 'diminish nil 'noerror)
@@ -147,7 +147,7 @@
 (setq column-number-mode t)
 
 ;; Show current function
-(which-func-mode 1)
+(which-function-mode 1)
 
 ;; Word navigation for camelCase
 (global-subword-mode 1)
@@ -167,6 +167,9 @@
   "Make the current window always display this buffer."
   nil "" nil
   (set-window-dedicated-p (selected-window) sticky-buffer-mode))
+
+;; Adding supported file extensions to speedbar
+(eval-after-load "speedbar" '(speedbar-add-supported-extension ".jsx"))
 
 ;; Hide Show
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
@@ -201,7 +204,8 @@
 
 ;; Open header files in c++-mode
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
-;; Open codex files in js-mode
+;; Open files in js-mode
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.codex\\'" . js-mode))
 (add-hook 'js-mode-hook
           (lambda ()
@@ -211,6 +215,14 @@
             ;; (smart-tabs-mode-enable)
             ;; (smart-tabs-advice js-indent-line js-indent-level)
             ))
+
+;; Open files in web-mode
+(add-hook 'web-mode-hook
+	  (lambda ()
+	    (setq indent-tabs-mode nil)
+	    (setq tab-width 2)
+	    (setq js-indent-level 2)
+	    ))
 
 ;; Org mode
 (require 'org)
@@ -396,7 +408,7 @@
 ;; (global-set-key (kbd "C-c C-n") 'flycheck-next-error)
 ;; (global-set-key (kbd "C-c C-p") 'flycheck-previous-error)
 
-;; (setq c++-mode-hook nil)
+;; C++ mode hook
 (add-hook 'c++-mode-hook
           (lambda ()
             (setq c-basic-offset 2)
@@ -426,6 +438,13 @@
 	    ;; 	    "/home/dan/Code/core/dex/external"
 	    ;; 	    "/home/dan/Code/core/dex/build/debug"
 	    ;; 	    "/home/dan/Code/core/dex/build/msgpack/include"))))
+
+;; Python mode hook
+(add-hook 'python-mode-hook
+	  (lambda ()
+            (setq flycheck-check-syntax-automatically
+                  '(mode-enabled new-line save idle-change))
+	    (setq flycheck-idle-change-delay 0.1)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

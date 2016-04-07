@@ -25,7 +25,7 @@
 	popup
 	projectile
 	;; realgud
-	rtags
+	;; rtags
 	undo-tree
 	visual-regexp
 	visual-regexp-steroids
@@ -88,6 +88,17 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(compilation-scroll-output (quote first-error))
+ '(flycheck-clang-include-path
+	 (list
+		(expand-file-name "~/local/include")
+		(expand-file-name "~/local/include/libxml2")
+		(expand-file-name "~/code/core/dex/src")
+		(expand-file-name "~/code/core/dex/external")
+		(expand-file-name "~/code/core/dex/external/expected")
+		(expand-file-name "~/code/core/dex/build/debug")
+		(expand-file-name "~/code/core/dex/OSX/deps")
+		(expand-file-name "~/code/core/dex/build/debug")
+		(expand-file-name "~/code/core/dex/build/msgpack/include")))
  '(inhibit-startup-screen t)
  '(js3-auto-indent-p t)
  '(js3-consistent-level-indent-inner-bracket nil)
@@ -97,7 +108,8 @@
  '(js3-idle-timer-delay 0.4)
  '(js3-indent-on-enter-key t)
  '(js3-pretty-vars nil)
- '(js3-strict-trailing-comma-warning nil))
+ '(js3-strict-trailing-comma-warning nil)
+ '(tab-width 2))
 
 ;; Save Emacs Sessions
 (desktop-save-mode 1)
@@ -204,6 +216,7 @@
 
 ;; Open header files in c++-mode
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.ipp\\'" . c++-mode))
 ;; Open files in js-mode
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.codex\\'" . js-mode))
@@ -237,6 +250,12 @@
 (setq org-src-ask-before-returning-to-edit-buffer nil)
 (setq org-startup-indented t)
 (setq org-startup-truncated nil)
+(setq org-export-preserve-breaks t)
+(setq org-export-with-section-numbers nil)
+(setq org-export-with-sub-superscripts nil)
+(setq org-export-with-tables nil)
+(setq org-export-with-tags nil)
+(setq org-export-with-toc 0)
 
 ;; Set PATH
 (exec-path-from-shell-initialize)
@@ -353,91 +372,76 @@
 (setq magit-last-seen-setup-instructions "1.4.0")
 
 ;; RTags
-(require 'rtags)
-(rtags-enable-standard-keybindings)
+;; (require 'rtags)
+;; (rtags-enable-standard-keybindings)
 
 ;; RTags symbols
-(global-set-key (kbd "M-<return>") 'rtags-find-symbol-at-point)
-(global-set-key (kbd "C-M-<return>") 'rtags-find-references-at-point)
-(global-set-key (kbd "C-c r r") 'rtags-reparse-file)
-(setq rtags-tracking t)
+;; (global-set-key (kbd "M-<return>") 'rtags-find-symbol-at-point)
+;; (global-set-key (kbd "C-M-<return>") 'rtags-find-references-at-point)
+;; (global-set-key (kbd "C-c r r") 'rtags-reparse-file)
+;; (setq rtags-tracking t)
 
 ;; RTags error checking
-(rtags-diagnostics)
-(eval-after-load 'cc-mode
-  #'(define-key c++-mode-map (kbd "C-c C-p") nil))
-(eval-after-load 'cc-mode
-  #'(define-key c++-mode-map (kbd "C-c C-n") nil))
-(global-set-key (kbd "C-c C-n") 'rtags-next-diag)
-(global-set-key (kbd "C-c C-p") 'rtags-previous-diag)
-(setq rtags-display-current-error-as-tooltip t)
+;; (rtags-diagnostics)
+;; (eval-after-load 'cc-mode
+;;   #'(define-key c++-mode-map (kbd "C-c C-p") nil))
+;; (eval-after-load 'cc-mode
+;;   #'(define-key c++-mode-map (kbd "C-c C-n") nil))
+;; (global-set-key (kbd "C-c C-n") 'rtags-next-diag)
+;; (global-set-key (kbd "C-c C-p") 'rtags-previous-diag)
+;; (setq rtags-display-current-error-as-tooltip t)
 ;; (setq rtags-track-container t)
-(setq rtags-error-timer-interval 0)
-(set-face-attribute 'rtags-errline nil
-                    :background nil
-                    :underline '(:color "red" :style wave))
-(set-face-attribute 'rtags-fixitline nil
-                    :background nil
-                    :underline '(:color "Magenta" :style wave))
-(set-face-attribute 'rtags-skippedline nil
-                    :background nil
-                    :foreground "windowFrameColor")
-(set-face-attribute 'rtags-warnline nil
-                    :background nil
-                    :underline '(:color "Orange" :style wave))
+;; (setq rtags-error-timer-interval 0)
+;; (set-face-attribute 'rtags-errline nil
+;;                     :background nil
+;;                     :underline '(:color "red" :style wave))
+;; (set-face-attribute 'rtags-fixitline nil
+;;                     :background nil
+;;                     :underline '(:color "Magenta" :style wave))
+;; (set-face-attribute 'rtags-skippedline nil
+;;                     :background nil
+;;                     :foreground "windowFrameColor")
+;; (set-face-attribute 'rtags-warnline nil
+;;                     :background nil
+;;                     :underline '(:color "Orange" :style wave))
 
 ;; Company-rtags autocomplete
-(require 'company-rtags)
-(add-to-list 'company-backends 'company-rtags)
-(setq company-idle-delay 1)
-(setq company-rtags-begin-after-member-access t)
-(setq company-minimum-prefix-length 1)
-(setq rtags-completions-enabled t)
-(global-set-key (kbd "C-<return>") 'company-complete)
+;; (require 'company-rtags)
+;; (add-to-list 'company-backends 'company-rtags)
+;; (setq company-idle-delay 1)
+;; (setq company-rtags-begin-after-member-access t)
+;; (setq company-minimum-prefix-length 1)
+;; (setq rtags-completions-enabled t)
+;; (global-set-key (kbd "C-<return>") 'company-complete)
 
 ;; Company mode
 (add-hook 'after-init-hook 'global-company-mode)
 
 ;; Flycheck
-;; (require 'flycheck)
-;; (add-hook 'after-init-hook #'global-flycheck-mode)
-;; (eval-after-load 'cc-mode
-;;   #'(define-key c++-mode-map (kbd "C-c C-p") nil))
-;; (eval-after-load 'cc-mode
-;;   #'(define-key c++-mode-map (kbd "C-c C-n") nil))
-;; (global-set-key (kbd "C-c C-n") 'flycheck-next-error)
-;; (global-set-key (kbd "C-c C-p") 'flycheck-previous-error)
+(require 'flycheck)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(eval-after-load 'cc-mode
+  #'(define-key c++-mode-map (kbd "C-c C-p") nil))
+(eval-after-load 'cc-mode
+  #'(define-key c++-mode-map (kbd "C-c C-n") nil))
+(global-set-key (kbd "C-c C-n") 'flycheck-next-error)
+(global-set-key (kbd "C-c C-p") 'flycheck-previous-error)
 
 ;; C++ mode hook
 (add-hook 'c++-mode-hook
           (lambda ()
-            (setq c-basic-offset 2)
+            (setq-default c-basic-offset 2)
             (c-set-offset 'innamespace 0)
             (setq tab-width 2)
-            (setq indent-tabs-mode nil)))
-            ;; (setq flycheck-check-syntax-automatically
-            ;;       '(mode-enabled new-line save idle-change))
-	    ;; (setq flycheck-idle-change-delay 0.1)
-	    ;; (setq flycheck-display-errors-delay 0)
-            ;; (setq flycheck-clang-language-standard "c++1y")
-            ;; (setq flycheck-clang-standard-library "libc++")
-	    ;; (setq flycheck-clang-args
-	    ;; 	  '("-ferror-limit=123"))
-            ;; (setq flycheck-clang-include-path
-            ;;       '("/Users/danschoppe/local/Cellar/llvm/3.5.1/include/c++/v1/"
-	    ;; 	    "/Users/danschoppe/local/include"
-            ;;         "/Users/danschoppe/local/include/libxml2"
-            ;;         "/Users/danschoppe/Code/core/dex/src"
-            ;;         "/Users/danschoppe/Code/core/dex/external"
-            ;;         "/Users/danschoppe/Code/core/dex/external/lz4"
-            ;;         "/Users/danschoppe/Code/core/dex/build/debug"
-            ;;         "/Users/danschoppe/Code/core/dex/OSX/deps"
-            ;;         "/Users/danschoppe/Code/core/dex/build/msgpack/include"
-	    ;; 	    "/usr/include/c++/v1"
-	    ;; 	    "/home/dan/Code/core/dex/src"
-	    ;; 	    "/home/dan/Code/core/dex/external"
-	    ;; 	    "/home/dan/Code/core/dex/build/debug"
-	    ;; 	    "/home/dan/Code/core/dex/build/msgpack/include"))))
+            (setq indent-tabs-mode nil)
+            (setq flycheck-check-syntax-automatically
+                  '(mode-enabled new-line save idle-change))
+	    (setq flycheck-idle-change-delay 0.1)
+	    (setq flycheck-display-errors-delay 0)
+            (setq flycheck-clang-language-standard "c++1y")
+            (setq flycheck-clang-standard-library "libc++")
+	    (setq flycheck-clang-args
+	    	  '("-ferror-limit=123"))))
 
 ;; Python mode hook
 (add-hook 'python-mode-hook
@@ -454,3 +458,5 @@
  '(term ((t (:inherit default))))
  '(which-func ((t nil))))
 (put 'erase-buffer 'disabled nil)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)

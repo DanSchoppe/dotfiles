@@ -1,6 +1,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
-	editor = emacs --no-window-system --quick
+	editor = emacs --quick
+	pager = diff-highlight | diff-so-fancy | less --tabs=1,5 -R
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	# Source: https://codingkilledthecat.wordpress.com/2012/04/27/git-stash-pop-considered-harmful/

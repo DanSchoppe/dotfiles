@@ -17,15 +17,17 @@
 	flx-ido
 	flycheck
 	git-gutter
+	hackernews
 	icicles
 	indent-guide
+	json-mode
 	keyfreq
 	magit
 	multiple-cursors
 	popup
 	projectile
 	;; realgud
-	;; rtags
+	rtags
 	undo-tree
 	visual-regexp
 	visual-regexp-steroids
@@ -92,13 +94,13 @@
 	 (list
 		(expand-file-name "~/local/include")
 		(expand-file-name "~/local/include/libxml2")
-		(expand-file-name "~/code/core/dex/src")
-		(expand-file-name "~/code/core/dex/external")
-		(expand-file-name "~/code/core/dex/external/expected")
-		(expand-file-name "~/code/core/dex/build/debug")
-		(expand-file-name "~/code/core/dex/OSX/deps")
-		(expand-file-name "~/code/core/dex/build/debug")
-		(expand-file-name "~/code/core/dex/build/msgpack/include")))
+		(expand-file-name "~/code/core/dex_93/src")
+		(expand-file-name "~/code/core/dex_93/external")
+		(expand-file-name "~/code/core/dex_93/external/expected")
+		(expand-file-name "~/code/core/dex_93/build/debug")
+		(expand-file-name "~/code/core/dex_93/OSX/deps")
+		(expand-file-name "~/code/core/dex_93/build/debug")
+		(expand-file-name "~/code/core/dex_93/build/msgpack/include")))
  '(inhibit-startup-screen t)
  '(js3-auto-indent-p t)
  '(js3-consistent-level-indent-inner-bracket nil)
@@ -109,7 +111,8 @@
  '(js3-indent-on-enter-key t)
  '(js3-pretty-vars nil)
  '(js3-strict-trailing-comma-warning nil)
- '(tab-width 2))
+ '(tab-width 2)
+ '(tramp-auto-save-directory "/tmp"))
 
 ;; Save Emacs Sessions
 (desktop-save-mode 1)
@@ -117,7 +120,15 @@
 ;; Enable clipboard integration
 (setq x-select-enable-clipboard t)
 
-;; Tabs
+;; Configure file backups
+(setq
+ backup-by-copying t      ; don't clobber symlinks
+ backup-directory-alist
+ '(("." . "~/.saves"))    ; don't litter my fs tree
+ delete-old-versions t
+ kept-new-versions 6
+ kept-old-versions 2
+ version-control t)       ; use versioned backups;; Tabs
 (setq indent-tabs-mode nil)
 (setq tab-width 2)
 
@@ -168,6 +179,8 @@
 (setq mouse-wheel-scroll-amount '(3 ((shift) . 1))) ;; one line at a time
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+(eval-after-load 'eww-mode #'(define-key eww-mode-map (kbd "M-n") nil))
+(eval-after-load 'eww-mode #'(define-key eww-mode-map (kbd "M-p") nil))
 (global-set-key "\M-n"  (lambda () (interactive) (scroll-up   4)) )
 (global-set-key "\M-p"  (lambda () (interactive) (scroll-down 4)) )
 
@@ -180,11 +193,16 @@
   nil "" nil
   (set-window-dedicated-p (selected-window) sticky-buffer-mode))
 
+;; Window splitting preferences
+(setq split-height-threshold 10000)
+(setq split-width-threshold 100)
+
 ;; Adding supported file extensions to speedbar
 (eval-after-load "speedbar" '(speedbar-add-supported-extension ".jsx"))
 
 ;; Hide Show
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
+(add-hook 'js-mode-hook 'hs-minor-mode)
 (global-set-key (kbd"C-v") 'hs-toggle-hiding)
 
 ;; Matching parenthesis
@@ -327,9 +345,14 @@
 ;; Buffer-move
 (require 'buffer-move)
 (global-set-key (kbd "C-M-i") 'buf-move-up)
-(global-set-key (kbd "C-M-k")   'buf-move-down)
-(global-set-key (kbd "C-M-j")   'buf-move-left)
+(global-set-key (kbd "C-M-k")  'buf-move-down)
+(global-set-key (kbd "C-M-j")  'buf-move-left)
 (global-set-key (kbd "C-M-l")  'buf-move-right)
+
+;; Ag (silver searcher)
+(setq ag-highlight-search t)
+(setq ag-reuse-buffers t)
+(setq ag-reuse-window t)
 
 ;; Projectile (project definition)
 (projectile-global-mode)
@@ -370,18 +393,19 @@
 ;; Magit (git)
 (require 'magit)
 (setq magit-last-seen-setup-instructions "1.4.0")
+(global-set-key (kbd "C-x C-g") 'magit-status)
 
-;; RTags
+;; ;; RTags
 ;; (require 'rtags)
 ;; (rtags-enable-standard-keybindings)
 
-;; RTags symbols
+;; ;; RTags symbols
 ;; (global-set-key (kbd "M-<return>") 'rtags-find-symbol-at-point)
 ;; (global-set-key (kbd "C-M-<return>") 'rtags-find-references-at-point)
 ;; (global-set-key (kbd "C-c r r") 'rtags-reparse-file)
 ;; (setq rtags-tracking t)
 
-;; RTags error checking
+;; ;; RTags error checking
 ;; (rtags-diagnostics)
 ;; (eval-after-load 'cc-mode
 ;;   #'(define-key c++-mode-map (kbd "C-c C-p") nil))
@@ -405,17 +429,17 @@
 ;;                     :background nil
 ;;                     :underline '(:color "Orange" :style wave))
 
-;; Company-rtags autocomplete
+;; ;; Company-rtags autocomplete
 ;; (require 'company-rtags)
 ;; (add-to-list 'company-backends 'company-rtags)
-;; (setq company-idle-delay 1)
+;; (setq company-idle-delay 0)
 ;; (setq company-rtags-begin-after-member-access t)
 ;; (setq company-minimum-prefix-length 1)
 ;; (setq rtags-completions-enabled t)
 ;; (global-set-key (kbd "C-<return>") 'company-complete)
 
-;; Company mode
-(add-hook 'after-init-hook 'global-company-mode)
+;; ;; Company mode
+;; (add-hook 'after-init-hook 'global-company-mode)
 
 ;; Flycheck
 (require 'flycheck)

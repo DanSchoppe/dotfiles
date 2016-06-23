@@ -145,7 +145,7 @@ fi
 # Paths
 #-------------------------------------------------------------------------------
 
-export PATH=$PATH:$HOME/Code/Scripts
+export PATH=$PATH:$HOME/code/Scripts
 export PATH=$PATH:$HOME/Applications
 
 if [[ ${PLATFORM} == "osx" ]]; then
@@ -156,8 +156,7 @@ if [[ ${PLATFORM} == "osx" ]]; then
 elif [[ ${PLATFORM} == "linux" ]]; then
     export CC=/usr/bin/clang
     export CXX=/usr/bin/clang++
-    export ANDROID_HOME=~/Code/android-studio/tools/android-sdk-linux
-    . ~/Code/Scripts/nvm.sh
+    export ANDROID_HOME=~/code/android-studio/tools/android-sdk-linux
 fi
 
 

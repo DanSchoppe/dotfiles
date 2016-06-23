@@ -2,3 +2,5 @@
 *~
 *.xcodeproj
 .#*
+compile_commands.json
+.agignore

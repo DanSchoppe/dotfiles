@@ -56,7 +56,7 @@
 
 ;; Window splitting preferences
 (setq split-height-threshold 10000)
-(setq split-width-threshold 100)
+(setq split-width-threshold 500)
 
 ;; Indent guide (vertical indentation indicators)
 ;; (set-face-attribute 'indent-guide-face nil

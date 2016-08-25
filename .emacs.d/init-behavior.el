@@ -9,12 +9,6 @@
 ;; Enable clipboard integration
 (setq x-select-enable-clipboard t)
 
-;; Save Emacs statistics
-;; (require 'keyfreq)
-;; (keyfreq-mode 1)
-;; (keyfreq-autosave-mode 1)
-;; M-x keyfreq-show to display statistics
-
 ;; Configure file backups
 (setq
  backup-by-copying t      ; don't clobber symlinks

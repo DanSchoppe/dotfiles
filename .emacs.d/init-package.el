@@ -16,7 +16,6 @@
         icicles
         indent-guide
         json-mode
-        keyfreq
         magit
         multiple-cursors
         popup

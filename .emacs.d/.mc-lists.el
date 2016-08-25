@@ -29,6 +29,7 @@
 				org-force-self-insert
 				org-kill-line
 				org-self-insert-command
+				org-yank
 				uncomment-region
 				yank-and-indent
 				))

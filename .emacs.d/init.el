@@ -23,6 +23,7 @@
 (load-init-file "init-c")
 (load-init-file "init-web")
 (load-init-file "init-python")
+(load-init-file "init-sql")
 
 ;; Load external libraries
 ;; (load-external-file "gud-lldb.el")

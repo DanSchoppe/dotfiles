@@ -1,8 +1,5 @@
 ;;; Dan Schoppe's Emacs init / configuration file
 
-;; Set PATH
-;; (exec-path-from-shell-initialize)
-
 ;; Load path
 (add-to-list 'load-path (locate-user-emacs-file "external"))
 (defun load-init-file (file)

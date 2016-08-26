@@ -1,3 +1,7 @@
+;; Set PATH
+(require 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
+
 ;; Save Emacs Sessions
 (desktop-save-mode 1)
 

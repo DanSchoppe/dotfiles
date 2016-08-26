@@ -1,11 +1,10 @@
 ;;; Dan Schoppe's Emacs init / configuration file
 
 ;; Load path
-(add-to-list 'load-path (locate-user-emacs-file "external"))
 (defun load-init-file (file)
 	(load (locate-user-emacs-file file)))
 (defun load-external-file (file)
-	(load (locate-user-emacs-file "external" file)))
+	(load (locate-user-emacs-file (concat "external/" file))))
 
 
 ;; Load initializations
@@ -23,4 +22,4 @@
 (load-init-file "init-sql")
 
 ;; Load external libraries
-;; (load-external-file "gud-lldb.el")
+(load-external-file "gud-lldb.el")

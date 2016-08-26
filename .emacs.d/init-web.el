@@ -2,6 +2,8 @@
 (add-hook 'js-mode-hook 'hs-minor-mode)
 (add-hook 'web-mode-hook 'hs-minor-mode)
 
+(setq-default js-indent-level 2)
+
 ;; Open files in web-mode
 (add-to-list 'auto-mode-alist '("\\.codex\\'" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.json\\'" . js-mode))

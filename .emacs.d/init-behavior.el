@@ -22,8 +22,8 @@
  kept-new-versions 6
  kept-old-versions 2
  version-control t)       ; use versioned backups;; Tabs
-(setq indent-tabs-mode nil)
-(setq tab-width 2)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 2)
 
 ;; Whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

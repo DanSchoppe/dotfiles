@@ -1,5 +1,5 @@
 ;; Disable startup screen
-'(inhibit-startup-screen t)
+(setq inhibit-startup-screen t)
 
 ;; Disable top tool-bar
 (tool-bar-mode -1)

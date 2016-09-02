@@ -22,6 +22,7 @@
         projectile
         ;; realgud
         rtags
+        sql-indent
         undo-tree
         visual-regexp
         visual-regexp-steroids

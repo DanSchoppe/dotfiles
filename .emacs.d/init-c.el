@@ -45,13 +45,13 @@
 	(list
 	 (expand-file-name "~/local/include")
 	 (expand-file-name "~/local/include/libxml2")
+	 (expand-file-name "~/local/include/libxslt")
 	 (expand-file-name "~/code/core/dex_93/src")
 	 (expand-file-name "~/code/core/dex_93/external")
 	 (expand-file-name "~/code/core/dex_93/external/expected")
 	 (expand-file-name "~/code/core/dex_93/build/debug")
 	 (expand-file-name "~/code/core/dex_93/OSX/deps")
-	 (expand-file-name "~/code/core/dex_93/build/debug")
-	 (expand-file-name "~/code/core/dex_93/build/msgpack/include")))
+	 (expand-file-name "~/code/core/dex_93/build/debug")))
 
 ;; ;; RTags
 ;; (require 'rtags)

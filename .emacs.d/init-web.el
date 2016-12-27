@@ -19,5 +19,20 @@
             (setq web-mode-code-indent-offset 2)
             ))
 
+;; Disable backtick (`) syntax highlighting for *.codex files
+(add-hook 'find-file-hook 'codex-backtick-syntax-highlighting)
+(defun codex-backtick-syntax-highlighting ()
+  (when (string= (file-name-extension buffer-file-name) "codex")
+    (modify-syntax-entry ?` " " js-mode-syntax-table)))
+
 ;; Adding supported file extensions to speedbar
 (eval-after-load "speedbar" '(speedbar-add-supported-extension ".jsx"))
+
+
+
+
+
+(defun my-project-hook ()
+  (when (string= (file-name-extension buffer-file-name) "ts")
+    (typescript-mode)
+    (tss-setup-current-buffer)))

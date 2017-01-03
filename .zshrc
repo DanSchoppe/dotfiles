@@ -103,6 +103,11 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 #-------------------------------------------------------------------------------
-# shell-specific configuration
+# system-specific configuration
+#-------------------------------------------------------------------------------
+source ~/.bash_system
+
+#-------------------------------------------------------------------------------
+# generic shell configuration
 #-------------------------------------------------------------------------------
 source ~/.shellrc

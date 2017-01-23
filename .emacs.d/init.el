@@ -11,6 +11,7 @@
 (load-init-file "init-package")
 (load-init-file "init-alias")
 (load-init-file "init-behavior")
+(load-init-file "init-calc")
 (load-init-file "init-funcs")
 (load-init-file "init-gui")
 (load-init-file "init-org")

@@ -102,6 +102,11 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
+# Modify behavior of word-forward and word-backward commands
+# Bash-like navigation
+autoload -U select-word-style
+select-word-style bash
+
 #-------------------------------------------------------------------------------
 # system-specific configuration
 #-------------------------------------------------------------------------------

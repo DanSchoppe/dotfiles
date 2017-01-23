@@ -6,7 +6,9 @@
 	    (setq flycheck-idle-change-delay 0.1)))
 
 ;; Commenting and uncommenting region
-(eval-after-load 'python-mode
+(eval-after-load 'python
   #'(define-key python-mode-map (kbd "C-c C-c") nil))
+(eval-after-load 'python-mode
+  #'(define-key python-mode-map (kbd "C-c C-u") nil))
 (global-set-key (kbd "C-c C-c") 'comment-region)
 (global-set-key (kbd "C-c C-u") 'uncomment-region)

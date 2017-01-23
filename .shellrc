@@ -46,6 +46,7 @@ fi
 #-------------------------------------------------------------------------------
 alias cls='printf "\033c"'
 alias gs='git status'
+alias gl='git lg'
 
 if [[ ${PLATFORM} == "osx" ]]; then
   alias ls='gls -ah --color=auto'

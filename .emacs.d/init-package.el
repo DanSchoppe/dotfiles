@@ -37,9 +37,6 @@
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
-;; Activate all the packages
-(package-initialize)
-
 ;; Fetch the list of packages available
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))

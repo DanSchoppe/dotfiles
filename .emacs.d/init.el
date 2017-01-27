@@ -1,6 +1,9 @@
 ;;; Dan Schoppe's Emacs init / configuration file
 
 ;; Load path
+
+(package-initialize)
+
 (defun load-init-file (file)
 	(load (locate-user-emacs-file file)))
 (defun load-external-file (file)

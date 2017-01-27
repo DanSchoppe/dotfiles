@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/danschoppe/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -83,8 +83,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-DEFAULT_USER="danschoppe"
-
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=1000000000
 SAVEHIST=1000000000
@@ -110,7 +108,7 @@ select-word-style bash
 #-------------------------------------------------------------------------------
 # system-specific configuration
 #-------------------------------------------------------------------------------
-source ~/.bash_system
+source ~/.shell_system
 
 #-------------------------------------------------------------------------------
 # generic shell configuration

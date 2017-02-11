@@ -73,6 +73,16 @@
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-c |") 'mc/vertical-align-with-space)
 
+;; Regex
+(require 'visual-regexp-steroids)
+;; (define-key global-map (kbd "C-c r") 'vr/replace)
+(define-key global-map (kbd "C-M-5") 'vr/query-replace)
+;; if you use multiple-cursors, this is for you:
+(define-key global-map (kbd "C-M-m") 'vr/mc-mark)
+;; to use visual-regexp-steroids's isearch instead of the built-in regexp isearch, also include the following lines:
+(define-key global-map (kbd "C-r") 'vr/isearch-backward) ;; C-M-r
+(define-key global-map (kbd "C-s") 'vr/isearch-forward) ;; C-M-s
+
 ;; Terminal
 '(compilation-scroll-output (quote first-error))
 ;; '(term ((t (:inherit default))))
@@ -81,4 +91,5 @@
 '(tramp-auto-save-directory "/tmp")
 
 ;; Company
-;; (add-hook 'after-init-hook 'global-company-mode)
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)

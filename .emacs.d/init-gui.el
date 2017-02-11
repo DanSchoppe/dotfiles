@@ -7,14 +7,17 @@
 ;; Enable winner-mode for cycling through window layouts
 (winner-mode 1)
 
+;; Text size
+(set-face-attribute 'default nil :height 110) ;; value in 1/10pt, so 100 will be 10pt font
+
+;; Maximize window on startup
+(toggle-frame-maximized)
+
 ;; Color theme
 (require 'color-theme)
 (setq color-theme-is-global t)
 (color-theme-initialize)
 (color-theme-classic)
-
-;; Text size
-(set-face-attribute 'default nil :height 110) ;; value in 1/10pt, so 100 will be 10pt font
 
 ;; Clean up mode-line
 (when (require 'diminish nil 'noerror)
@@ -36,7 +39,6 @@
 
 ;; Display function name in mode-line
 (which-func-mode 1)
-
 
 ;; Show line and column numbers
 (setq line-number-mode t)

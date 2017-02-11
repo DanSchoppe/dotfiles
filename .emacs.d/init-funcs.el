@@ -14,10 +14,6 @@
 (require 'undo-tree)
 (global-undo-tree-mode 1)
 
-;; Ace jump (Quick Emacs cursor navigation)
-(require 'ace-jump-mode)
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
-
 ;; Projectile (project definition)
 (projectile-global-mode)
 (setq projectile-enable-caching t)

@@ -17,6 +17,9 @@
             (setq web-mode-markup-indent-offset 2)
             (setq web-mode-css-indent-offset 2)
             (setq web-mode-code-indent-offset 2)
+            ;; Fix Promise indentation
+            ;; https://www.bountysource.com/issues/40358797-indentation-in-javascript-promise-and-other-chains
+            (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil))
             ))
 
 ;; Disable backtick (`) syntax highlighting for *.codex files
@@ -27,10 +30,6 @@
 
 ;; Adding supported file extensions to speedbar
 (eval-after-load "speedbar" '(speedbar-add-supported-extension ".jsx"))
-
-
-
-
 
 (defun my-project-hook ()
   (when (string= (file-name-extension buffer-file-name) "ts")

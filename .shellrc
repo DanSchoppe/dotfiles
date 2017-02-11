@@ -33,7 +33,7 @@ export PATH=$PATH:$HOME/Applications
 if [[ ${PLATFORM} == "osx" ]]; then
   export PATH=$HOME/local/bin:$PATH
   export PATH=$PATH:$HOME/.gem/ruby/2.0.0/bin
-  export EDITOR=$HOME/local/bin/emacs
+  export EDITOR='emacs --no-desktop --no-window-system'
 elif [[ ${PLATFORM} == "linux" ]]; then
   export CC=/usr/bin/clang
   export CXX=/usr/bin/clang++
@@ -44,6 +44,7 @@ fi
 #-------------------------------------------------------------------------------
 # Aliases
 #-------------------------------------------------------------------------------
+alias emacs='emacs --no-desktop --no-window-system'
 alias cls='printf "\033c"'
 alias gs='git status'
 alias gl='git lg'

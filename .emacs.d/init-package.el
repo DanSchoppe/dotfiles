@@ -1,33 +1,34 @@
 ;; Installed packages
 (setq package-enable-at-startup nil)
-(setq auto-installed-packages
-      '(ace-jump-mode
-        ag
-        autopair
-        buffer-move
-        color-theme
-        company
-        exec-path-from-shell
-        flx
-        flx-ido
-        flycheck
-        git-gutter
-        hackernews
-        icicles
-        indent-guide
-        json-mode
-        magit
-        multiple-cursors
-        popup
-        projectile
-        ;; realgud
-        rtags
-        sql-indent
-        undo-tree
-        visual-regexp
-        visual-regexp-steroids
-        web-mode
-        ))
+(setq auto-installed-packages '(
+  ag
+  autopair
+  buffer-move
+  cmake-mode
+  color-theme
+  company-irony
+  doremi-cmd
+  exec-path-from-shell
+  flx-ido
+  flycheck
+  flymake-json
+  git-gutter-fringe
+  hackernews
+  icicles
+  indent-guide
+  magit
+  markdown-preview-mode
+  multi-term
+  multiple-cursors
+  popup
+  projectile
+  realgud
+  rtags
+  sql-indent
+  undo-tree
+  visual-regexp-steroids
+  web-mode
+))
 
 ;; Melpa
 (require 'package)

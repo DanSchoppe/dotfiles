@@ -2,7 +2,6 @@
 (setq package-enable-at-startup nil)
 (setq auto-installed-packages '(
   ag
-  autopair
   buffer-move
   cmake-mode
   color-theme

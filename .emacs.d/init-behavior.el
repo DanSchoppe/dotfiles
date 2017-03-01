@@ -41,10 +41,8 @@
   nil "" nil
   (set-window-dedicated-p (selected-window) sticky-buffer-mode))
 
-;; Autopair (bracket matching)
-(require 'autopair)
-(autopair-global-mode 1)
-(setq autopair-autowrap t)
+;; Electric pair (autopair)
+(electric-pair-mode 1)
 
 ;; Matching parenthesis
 (setq show-paren-delay 0)

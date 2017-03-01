@@ -25,8 +25,6 @@
     '(diminish 'company-mode ""))
   (eval-after-load "hideshow"
     '(diminish 'hs-minor-mode ""))
-  (eval-after-load "autopair"
-    '(diminish 'autopair-mode ""))
   (eval-after-load "projectile"
     '(diminish 'projectile-mode ""))
   (eval-after-load "undo-tree"

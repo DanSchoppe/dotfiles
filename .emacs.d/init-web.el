@@ -20,6 +20,9 @@
             ;; Fix Promise indentation
             ;; https://www.bountysource.com/issues/40358797-indentation-in-javascript-promise-and-other-chains
             (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil))
+            ;; Comment using // style instead of block comment /* */ style
+            (add-to-list 'web-mode-comment-formats '("jsx" . "//" ))
+            (add-to-list 'web-mode-comment-formats '("javascript" . "//" ))
             ))
 
 ;; Disable backtick (`) syntax highlighting for *.codex files

@@ -78,8 +78,8 @@
 ;; if you use multiple-cursors, this is for you:
 (define-key global-map (kbd "C-M-m") 'vr/mc-mark)
 ;; to use visual-regexp-steroids's isearch instead of the built-in regexp isearch, also include the following lines:
-(define-key global-map (kbd "C-r") 'vr/isearch-backward) ;; C-M-r
-(define-key global-map (kbd "C-s") 'vr/isearch-forward) ;; C-M-s
+(define-key global-map (kbd "C-M-r") 'vr/isearch-backward)
+(define-key global-map (kbd "C-M-s") 'vr/isearch-forward)
 
 ;; Terminal
 '(compilation-scroll-output (quote first-error))

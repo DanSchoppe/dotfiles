@@ -31,4 +31,4 @@
 (load-init-file "init-sh")
 
 ;; Load external libraries
-(load-external-file "gud-lldb.el")
+(load-external-file "realgud-lldb.el")

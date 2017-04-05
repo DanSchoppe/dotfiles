@@ -41,6 +41,9 @@
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
+;; Load path
+(package-initialize)
+
 ;; Install the missing packages
 (dolist (package auto-installed-packages)
   (unless (package-installed-p package)

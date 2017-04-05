@@ -5,6 +5,9 @@
 ;; Save Emacs Sessions
 (desktop-save-mode 1)
 
+;; Disable view-emacs-news
+(global-unset-key (kbd "C-h C-n"))
+
 ;; Auto-revert buffers if updated on disk
 (global-auto-revert-mode t)
 ;; Reloading buffer from disk

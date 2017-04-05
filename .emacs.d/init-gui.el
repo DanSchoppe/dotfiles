@@ -13,6 +13,10 @@
 ;; Maximize window on startup
 (toggle-frame-maximized)
 
+;; Configure scratch buffer
+(setq initial-major-mode 'javascript-mode)
+(setq initial-scratch-message nil)
+
 ;; Color theme
 (require 'color-theme)
 (setq color-theme-is-global t)

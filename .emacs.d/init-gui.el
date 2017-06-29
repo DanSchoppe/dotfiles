@@ -59,8 +59,8 @@
 (global-set-key "\M-p"  (lambda () (interactive) (scroll-down 4)) )
 
 ;; Window splitting preferences
-(setq split-height-threshold 10000)
-(setq split-width-threshold 500)
+(setq split-height-threshold 160)
+(setq split-width-threshold nil)
 
 ;; Indent guide (vertical indentation indicators)
 ;; (set-face-attribute 'indent-guide-face nil

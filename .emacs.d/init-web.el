@@ -4,9 +4,12 @@
 
 (setq-default js-indent-level 2)
 
+;; Disassociate json files from javascript-mode (in case they're huge)
+(add-to-list 'auto-mode-alist '("\\.json\\'" . fundamental-mode))
+
 ;; Open files in web-mode
 (add-to-list 'auto-mode-alist '("\\.codex\\'" . js-mode))
-(add-to-list 'auto-mode-alist '("\\.json\\'" . js-mode))
+; (add-to-list 'auto-mode-alist '("\\.json\\'" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 

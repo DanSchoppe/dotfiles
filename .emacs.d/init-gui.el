@@ -23,22 +23,6 @@
 (color-theme-initialize)
 (color-theme-classic)
 
-;; Clean up mode-line
-(when (require 'diminish nil 'noerror)
-  (eval-after-load "company"
-    '(diminish 'company-mode ""))
-  (eval-after-load "hideshow"
-    '(diminish 'hs-minor-mode ""))
-  (eval-after-load "projectile"
-    '(diminish 'projectile-mode ""))
-  (eval-after-load "undo-tree"
-    '(diminish 'undo-tree-mode ""))
-  (eval-after-load "abbrev"
-    '(diminish 'abbrev-mode ""))
-  (eval-after-load "git-gutter"
-    '(diminish 'git-gutter-mode "")))
-(setq vc-handled-backends ())
-
 ;; Display function name in mode-line
 (which-func-mode 1)
 

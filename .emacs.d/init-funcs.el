@@ -14,10 +14,6 @@
 (require 'undo-tree)
 (global-undo-tree-mode 1)
 
-;; Projectile (project definition)
-(projectile-global-mode)
-(setq projectile-enable-caching t)
-
 ;; Ag (silver searcher)
 (setq ag-highlight-search t)
 (setq ag-reuse-buffers t)

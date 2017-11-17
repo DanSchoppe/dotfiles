@@ -22,6 +22,8 @@
         delete-horizontal-space
         electric-newline-and-maybe-indent
         end-of-buffer
+        forward-sexp
+        helm-show-kill-ring
         indent-for-tab-command
         kill-region
         org-beginning-of-line
@@ -32,6 +34,7 @@
         org-kill-line
         org-self-insert-command
         org-yank
+        python-indent-dedent-line
         uncomment-region
         yank-and-indent
         ))
@@ -39,6 +42,8 @@
 (setq mc/cmds-to-run-once
       '(
         company-complete
+        helm-M-x
+        help-for-help
         info-emacs-manual
         org-edit-src-save
         ))

@@ -10,9 +10,12 @@
   exec-path-from-shell
   flx-ido
   flycheck
+  flycheck-pycheckers
   flymake-json
   git-gutter-fringe
   hackernews
+  helm-rtags
+  helm-ag
   icicles
   indent-guide
   magit
@@ -20,10 +23,11 @@
   multi-term
   multiple-cursors
   popup
-  projectile
   realgud
   rtags
+  rudel
   sql-indent
+  toml-mode
   undo-tree
   visual-regexp-steroids
   web-mode

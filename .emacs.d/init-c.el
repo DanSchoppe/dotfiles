@@ -97,3 +97,4 @@
 (setq company-minimum-prefix-length 1)
 (setq rtags-completions-enabled t)
 (global-set-key (kbd "C-<return>") 'company-complete)
+(setq rtags-display-result-backend 'helm)

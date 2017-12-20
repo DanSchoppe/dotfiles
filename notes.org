@@ -1,0 +1,55 @@
+* Kinesis keyboard
+** Remapped keys
+Progrm + F12, then...
+|-----------+----+------------|
+| From      | -> | To         |
+|-----------+----+------------|
+| =         | -> | `          |
+| `         | -> | =          |
+| Ctrl      | -> | Caps Lock  |
+| Ctrl      | -> | Backspace  |
+| Alt       | -> | Delete     |
+| Super     | -> | Left Ctrl  |
+| Backspace | -> | Right Ctrl |
+| Delete    | -> | Super      |
+| Tab       | -> | End        |
+| Up        | -> | Right      |
+| Down      | -> | Left       |
+| Left      | -> | Up         |
+| Right     | -> | Down       |
+|-----------+----+------------|
+
+** Major mode
+= + m enables Mac mode
+
+** Media keys
+= + n enables media keys
+  - F3:  previous
+  - F4:  play
+  - F5:  next
+  - F9:  mute
+  - F10: volume down
+  - F11: volume up
+
+disable F3-F5 by doing =+F3, =+F4, =+F5
+
+** Mac power key
+Turn scroll lock into power button:
+= + Scroll Lock
+
+** Audible tones
+Toggle: Progrm + hyphen
+
+* Killing processes by name
+http://stackoverflow.com/a/3510850
+kill $(ps aux | grep '[p]ython foo.py' | awk '{print $2}')
+
+* Postgres: monitoring connections by IP
+postgres=# select client_addr, count(client_addr) from pg_stat_activity group by client_addr;
+  client_addr  | count
+---------------+-------
+               |     0
+ 192.168.1.1   |     3
+ 192.168.1.2   |     6
+
+postgres=# select pg_terminate_backend(pid) from pg_stat_activity where client_addr=192.168.1.1';

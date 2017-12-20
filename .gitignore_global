@@ -7,3 +7,4 @@ compile_commands.json
 .agignore
 .emacs.desktop
 .emacs.desktop.lock
+.pycheckers

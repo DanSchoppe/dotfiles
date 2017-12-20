@@ -1,0 +1,6 @@
+DEFAULT_USER="firstlast"
+
+#-------------------------------------------------------------------------------
+# SSH tunnels
+#-------------------------------------------------------------------------------
+alias tunnel_example='ssh -o ServerAliveInterval=60 -NCL 50000:localhost:1234 example'

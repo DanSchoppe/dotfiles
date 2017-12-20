@@ -21,6 +21,7 @@
         dabbrev-expand
         delete-horizontal-space
         electric-newline-and-maybe-indent
+        electric-pair-delete-pair
         end-of-buffer
         forward-sexp
         helm-show-kill-ring

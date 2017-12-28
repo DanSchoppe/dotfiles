@@ -22,6 +22,7 @@
 (load-init-file "init-funcs")
 (load-init-file "init-gui")
 (load-init-file "init-org")
+(load-init-file "init-markdown")
 
 ;; Languages
 (load-init-file "init-c")

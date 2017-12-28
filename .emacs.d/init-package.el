@@ -17,8 +17,10 @@
   helm-rtags
   helm-ag
   icicles
+  impatient-mode
   indent-guide
   magit
+  markdown-mode
   markdown-preview-mode
   multi-term
   multiple-cursors

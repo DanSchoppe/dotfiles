@@ -24,15 +24,15 @@ fi
 
 
 #-------------------------------------------------------------------------------
-# Paths
+# PATH
 #-------------------------------------------------------------------------------
 
-export PATH=$PATH:$HOME/code/Scripts
 export PATH=$PATH:$HOME/Applications
 
 if [[ ${PLATFORM} == "osx" ]]; then
   export PATH=$HOME/local/bin:$PATH
-  export PATH=$PATH:$HOME/.gem/ruby/2.0.0/bin
+  export PATH=$PATH:$HOME/local/lib/ruby/gems/2.5.0
+  export PATH=$PATH:$HOME/Library/Python/3.6/bin
   export EDITOR='emacs --no-desktop --no-window-system'
 elif [[ ${PLATFORM} == "linux" ]]; then
   export CC=/usr/bin/clang
@@ -40,14 +40,25 @@ elif [[ ${PLATFORM} == "linux" ]]; then
   export ANDROID_HOME=~/code/android-studio/tools/android-sdk-linux
 fi
 
+# nvm
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH=$PATH:$HOME/.rvm/bin
+
+# Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
 
 #-------------------------------------------------------------------------------
-# Aliases
+# alias
 #-------------------------------------------------------------------------------
 alias emacs='emacs --no-desktop --no-window-system'
 alias cls='printf "\033c"'
 alias gs='git status'
 alias gl='git lg'
+alias ecs='ecs-cli'
 
 if [[ ${PLATFORM} == "osx" ]]; then
   alias ls='gls -ah --color=auto'
@@ -64,6 +75,8 @@ fi
 
 alias python='python3'
 alias pip='pip3'
+
+alias ag='ag --path-to-ignore ~/.ignore'
 
 #-------------------------------------------------------------------------------
 # ls colors

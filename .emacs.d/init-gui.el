@@ -18,10 +18,7 @@
 (setq initial-scratch-message nil)
 
 ;; Color theme
-(require 'color-theme)
-(setq color-theme-is-global t)
-(color-theme-initialize)
-(color-theme-classic)
+(load-theme 'solarized-dark t)
 
 ;; Display function name in mode-line
 (which-func-mode 1)

@@ -13,6 +13,9 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 
+;; Open files in restclient-mode
+(add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode))
+
 ;; web-mode hook
 (add-hook 'web-mode-hook
           (lambda ()

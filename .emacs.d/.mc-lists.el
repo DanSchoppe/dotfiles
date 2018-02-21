@@ -36,6 +36,7 @@
         org-self-insert-command
         org-yank
         python-indent-dedent-line
+        upcase-region
         uncomment-region
         yank-and-indent
         ))

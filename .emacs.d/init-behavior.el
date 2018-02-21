@@ -44,6 +44,10 @@
   nil "" nil
   (set-window-dedicated-p (selected-window) sticky-buffer-mode))
 
+;; Unique buffer name scheme
+(setq uniquify-buffer-name-style "post-forward")
+(setq uniquify-separator "=")
+
 ;; Electric pair (autopair)
 (electric-pair-mode 1)
 

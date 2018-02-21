@@ -8,3 +8,5 @@ compile_commands.json
 .emacs.desktop
 .emacs.desktop.lock
 .pycheckers
+api.http
+README.html

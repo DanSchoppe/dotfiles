@@ -4,8 +4,10 @@
   ag
   buffer-move
   cmake-mode
-  color-theme
   company-irony
+  company-rtags
+  docker
+  dockerfile-mode
   doremi-cmd
   exec-path-from-shell
   flx-ido
@@ -22,17 +24,24 @@
   magit
   markdown-mode
   markdown-preview-mode
+  mocha
   multi-term
   multiple-cursors
   popup
   realgud
+  restclient
+  rspec-mode
   rtags
   rudel
+  rvm
+  shackle
+  solarized-theme
   sql-indent
   toml-mode
   undo-tree
   visual-regexp-steroids
   web-mode
+  yaml-mode
 ))
 
 ;; Melpa

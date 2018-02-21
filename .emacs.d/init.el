@@ -26,10 +26,11 @@
 
 ;; Languages
 (load-init-file "init-c")
-(load-init-file "init-web")
 (load-init-file "init-python")
-(load-init-file "init-sql")
+(load-init-file "init-ruby")
 (load-init-file "init-sh")
+(load-init-file "init-sql")
+(load-init-file "init-web")
 
 ;; Load external libraries
-(load-external-file "realgud-lldb.el")
+;; (load-external-file "realgud-lldb.el")

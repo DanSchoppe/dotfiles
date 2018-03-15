@@ -8,7 +8,7 @@
 (winner-mode 1)
 
 ;; Text size
-(set-face-attribute 'default nil :height 110) ;; value in 1/10pt, so 100 will be 10pt font
+(set-face-attribute 'default nil :height 140) ;; value in 1/10pt, so 100 will be 10pt font
 
 ;; Maximize window on startup
 (toggle-frame-maximized)

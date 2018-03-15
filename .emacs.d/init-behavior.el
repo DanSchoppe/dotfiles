@@ -30,6 +30,7 @@
 
 ;; Whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(setq require-final-newline t)
 (setq show-trailing-whitespace 1)
 
 ;; Disable wrapped lines

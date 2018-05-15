@@ -5,8 +5,10 @@
   ag
   buffer-move
   cmake-mode
+  color-theme
   company-irony
   company-rtags
+  company-terraform
   docker
   dockerfile-mode
   doremi-cmd
@@ -17,8 +19,8 @@
   flymake-json
   git-gutter-fringe
   hackernews
-  helm-rtags
   helm-ag
+  helm-rtags
   icicles
   impatient-mode
   indent-guide
@@ -39,6 +41,7 @@
   shackle
   solarized-theme
   sql-indent
+  terraform-mode
   toml-mode
   undo-tree
   visual-regexp-steroids

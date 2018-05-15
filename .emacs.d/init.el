@@ -20,6 +20,7 @@
 (load-init-file "init-behavior")
 (load-init-file "init-calc")
 (load-init-file "init-funcs")
+(load-init-file "init-git")
 (load-init-file "init-gui")
 (load-init-file "init-org")
 (load-init-file "init-markdown")

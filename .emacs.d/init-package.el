@@ -22,6 +22,7 @@
   impatient-mode
   indent-guide
   magit
+  magit-gh-pulls
   markdown-mode
   markdown-preview-mode
   mocha

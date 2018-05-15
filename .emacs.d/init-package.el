@@ -1,6 +1,7 @@
 ;; Installed packages
 (setq package-enable-at-startup nil)
 (setq auto-installed-packages '(
+  add-node-modules-path
   ag
   buffer-move
   cmake-mode

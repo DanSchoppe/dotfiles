@@ -27,6 +27,7 @@
             ;; Comment using // style instead of block comment /* */ style
             (add-to-list 'web-mode-comment-formats '("jsx" . "//" ))
             (add-to-list 'web-mode-comment-formats '("javascript" . "//" ))
+            (add-node-modules-path)
             ))
 
 ;; Adding supported file extensions to speedbar

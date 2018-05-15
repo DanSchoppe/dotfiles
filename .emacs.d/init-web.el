@@ -4,14 +4,12 @@
 
 (setq-default js-indent-level 2)
 
-;; Disassociate json files from javascript-mode (in case they're huge)
-(add-to-list 'auto-mode-alist '("\\.json\\'" . fundamental-mode))
-
 ;; Open files in web-mode
-(add-to-list 'auto-mode-alist '("\\.codex\\'" . js-mode))
-; (add-to-list 'auto-mode-alist '("\\.json\\'" . js-mode))
+(add-to-list 'auto-mode-alist '("\\.json\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
 
 ;; Open files in restclient-mode
 (add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode))
@@ -31,16 +29,18 @@
             (add-to-list 'web-mode-comment-formats '("javascript" . "//" ))
             ))
 
-;; Disable backtick (`) syntax highlighting for *.codex files
-(add-hook 'find-file-hook 'codex-backtick-syntax-highlighting)
-(defun codex-backtick-syntax-highlighting ()
-  (when (string= (file-name-extension buffer-file-name) "codex")
-    (modify-syntax-entry ?` " " js-mode-syntax-table)))
-
 ;; Adding supported file extensions to speedbar
 (eval-after-load "speedbar" '(speedbar-add-supported-extension ".jsx"))
 
-(defun my-project-hook ()
-  (when (string= (file-name-extension buffer-file-name) "ts")
-    (typescript-mode)
-    (tss-setup-current-buffer)))
+;; (defun my-project-hook ()
+;;   (when (string= (file-name-extension buffer-file-name) "ts")
+;;     (typescript-mode)
+;;     (tss-setup-current-buffer)))
+
+;; Terraform
+(require 'company-terraform)
+(company-terraform-init)
+
+;; Flycheck
+(require 'flycheck)
+(flycheck-add-mode 'javascript-eslint 'web-mode)

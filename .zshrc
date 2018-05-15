@@ -105,7 +105,7 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 autoload -U select-word-style
 select-word-style bash
 
-source ~/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source ~/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.iterm2_shell_integration.zsh
 
 #-------------------------------------------------------------------------------

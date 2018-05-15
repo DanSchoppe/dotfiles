@@ -1,4 +1,10 @@
 * Kinesis keyboard
+** Major mode
+Start from Windows mode.
+
+= + w enables Windows mode
+= + m enables Mac mode
+
 ** Remapped keys
 Progrm + F12, then...
 |-----------+----+------------|
@@ -19,9 +25,6 @@ Progrm + F12, then...
 | Right     | -> | Down       |
 |-----------+----+------------|
 
-** Major mode
-= + m enables Mac mode
-
 ** Media keys
 = + n enables media keys
   - F3:  previous
@@ -39,6 +42,16 @@ Turn scroll lock into power button:
 
 ** Audible tones
 Toggle: Progrm + hyphen
+The keyboard includes change-of-state tones for Caps Lock (A), Num Lock (1), Keypad, Scroll
+Lock (9) and Insert. When the keyboard is used with a PC, tones sound twice when a tonelinked
+action (e.g. Caps Lock) is turned on, and once when it is turned off.
+
+** Key click
+Toggle: Progrm + backslash \
+By default, the keyboard includes an audible key click for all keys, including the function
+keys. To turn off the key click, hold down Progrm and press the Backslash key (“\”) located
+just below the hyphen key). If you wish to turn on the key click again, simply repeat the
+process
 
 * Killing processes by name
 http://stackoverflow.com/a/3510850

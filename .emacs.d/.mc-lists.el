@@ -20,6 +20,7 @@
         c-indent-line-or-region
         dabbrev-expand
         delete-horizontal-space
+        describe-key-briefly
         electric-newline-and-maybe-indent
         electric-pair-delete-pair
         end-of-buffer
@@ -27,6 +28,7 @@
         helm-show-kill-ring
         indent-for-tab-command
         kill-region
+        markdown-outdent-or-delete
         org-beginning-of-line
         org-cycle
         org-delete-char
@@ -36,8 +38,11 @@
         org-self-insert-command
         org-yank
         python-indent-dedent-line
-        upcase-region
+        typescript-insert-and-autoconvert-to-template
+        typescript-insert-and-indent
         uncomment-region
+        upcase-region
+        yaml-electric-backspace
         yank-and-indent
         ))
 

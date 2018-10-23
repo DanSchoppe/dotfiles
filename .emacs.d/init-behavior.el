@@ -45,10 +45,6 @@
   nil "" nil
   (set-window-dedicated-p (selected-window) sticky-buffer-mode))
 
-;; Unique buffer name scheme
-(setq uniquify-buffer-name-style "post-forward")
-(setq uniquify-separator "=")
-
 ;; Electric pair (autopair)
 (electric-pair-mode 1)
 
@@ -67,9 +63,18 @@
   (yank)
   (call-interactively 'indent-region))
 (global-set-key (kbd "C-y") 'yank-and-indent)
+(global-set-key (kbd "C-M-y") 'yank)
 
 ;; Hide Show
 (global-set-key (kbd"C-v") 'hs-toggle-hiding)
+;; Support for Ruby
+(eval-after-load "hideshow"
+  '(add-to-list 'hs-special-modes-alist
+                `(ruby-mode
+                  ,(rx (or "def" "class" "module" "do" "{" "[")) ; Block start
+                  ,(rx (or "}" "]" "end"))                       ; Block end
+                  ,(rx (or "#" "=begin"))                        ; Comment start
+                  ruby-forward-sexp nil)))
 
 ;; Multiple cursors
 (require 'multiple-cursors)
@@ -99,3 +104,9 @@
 ;; Company
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
+
+;; Flycheck
+(require 'flycheck)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(global-set-key (kbd "C-c C-n") 'flycheck-next-error)
+(global-set-key (kbd "C-c C-p") 'flycheck-previous-error)

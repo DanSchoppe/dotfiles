@@ -24,21 +24,17 @@ fi
 
 
 #-------------------------------------------------------------------------------
-# PATH
+# Environment
 #-------------------------------------------------------------------------------
 
 export PATH=$PATH:$HOME/Applications
 
-if [[ ${PLATFORM} == "osx" ]]; then
-  export PATH=$HOME/local/bin:$PATH
-  export PATH=$PATH:$HOME/local/lib/ruby/gems/2.5.0
-  export PATH=$PATH:$HOME/Library/Python/3.6/bin
-  export EDITOR='emacs --no-desktop --no-window-system'
-elif [[ ${PLATFORM} == "linux" ]]; then
-  export CC=/usr/bin/clang
-  export CXX=/usr/bin/clang++
-  export ANDROID_HOME=~/code/android-studio/tools/android-sdk-linux
-fi
+export CC=/usr/local/bin/clang
+export CXX=/usr/local/bin/clang++
+export CPP='/usr/local/bin/clang++ -E'
+
+# Add Python binary
+export PATH=$PATH:$HOME/Library/Python/3.6/bin
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH=$PATH:$HOME/.rvm/bin

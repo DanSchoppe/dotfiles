@@ -8,6 +8,7 @@
   (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup))
 (global-set-key (kbd "C-c C-n") 'flycheck-next-error)
 (global-set-key (kbd "C-c C-p") 'flycheck-previous-error)
+(setq flycheck-pycheckers-venv-root "~/.local/share/virtualenvs")
 
 ;; Python mode hook
 (add-hook 'python-mode-hook

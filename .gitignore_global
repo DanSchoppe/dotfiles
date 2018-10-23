@@ -4,9 +4,11 @@
 *.xcodeproj
 .#*
 compile_commands.json
-.agignore
+.ignore
 .emacs.desktop
 .emacs.desktop.lock
 .pycheckers
 api.http
 README.html
+.cquery_cached_index
+.dir-locals.el

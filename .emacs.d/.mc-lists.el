@@ -48,9 +48,13 @@
 
 (setq mc/cmds-to-run-once
       '(
+        c-electric-pound
         company-complete
         helm-M-x
         help-for-help
         info-emacs-manual
         org-edit-src-save
+        previous-buffer
+        select-all
+        switch-to-buffer
         ))

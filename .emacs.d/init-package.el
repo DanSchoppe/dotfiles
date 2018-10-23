@@ -9,6 +9,7 @@
   company-irony
   company-rtags
   company-terraform
+  cquery
   docker
   dockerfile-mode
   doremi-cmd

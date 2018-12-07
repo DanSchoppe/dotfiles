@@ -1,15 +1,11 @@
-;; Hide Show
-(add-hook 'js-mode-hook 'hs-minor-mode)
-(add-hook 'web-mode-hook 'hs-minor-mode)
-
-(setq-default js-indent-level 2)
-
 ;; Open files in web-mode
 (add-to-list 'auto-mode-alist '("\\.json\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+
+(setq-default js-indent-level 2)
 
 ;; Support JSX formatting
 (setq web-mode-content-types-alist
@@ -21,7 +17,6 @@
 ;; web-mode hook
 (add-hook 'web-mode-hook
           (lambda ()
-            ;; ('hs-minor-mode)
             (setq web-mode-markup-indent-offset 2)
             (setq web-mode-css-indent-offset 2)
             (setq web-mode-code-indent-offset 2)
@@ -34,6 +29,13 @@
             (add-to-list 'web-mode-comment-formats '("javascript" . "//" ))
             (add-node-modules-path)
             ))
+
+;; standardfmt
+(require 'standardfmt)
+(add-hook 'web-mode-hook #'standardfmt-mode)
+
+;; Hide Show
+(add-hook 'web-mode-hook 'hs-minor-mode)
 
 ;; Adding supported file extensions to speedbar
 (eval-after-load "speedbar" '(speedbar-add-supported-extension ".jsx"))

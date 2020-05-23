@@ -1,3 +1,6 @@
+;; Text size
+(set-face-attribute 'default nil :height 180) ;; value in 1/10pt, so 100 will be 10pt font
+
 ;; Disable startup screen
 (setq inhibit-startup-screen t)
 
@@ -6,9 +9,6 @@
 
 ;; Enable winner-mode for cycling through window layouts
 (winner-mode 1)
-
-;; Text size
-(set-face-attribute 'default nil :height 140) ;; value in 1/10pt, so 100 will be 10pt font
 
 ;; Maximize window on startup
 (toggle-frame-maximized)

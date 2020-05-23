@@ -31,6 +31,8 @@
             ))
 
 ;; standardfmt
+;; Note: Had to modify node_modules to work around bug:
+;; https://github.com/standard/standard/issues/1384#issuecomment-596027583
 (require 'standardfmt)
 (add-hook 'web-mode-hook #'standardfmt-mode)
 

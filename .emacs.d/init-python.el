@@ -1,5 +1,5 @@
 ;; python shell
-(setq python-shell-interpreter "python3")
+(setq python-shell-interpreter "python")
 
 (require 'flycheck)
 (require 'flycheck-pycheckers)
@@ -9,7 +9,7 @@
 (global-set-key (kbd "C-c C-n") 'flycheck-next-error)
 (global-set-key (kbd "C-c C-p") 'flycheck-previous-error)
 (setq flycheck-pycheckers-venv-root "~/.local/share/virtualenvs")
-
+(setq flycheck-pycheckers-checkers '(pylint mypy3))
 ;; Python mode hook
 (add-hook 'python-mode-hook
 	  (lambda ()
@@ -20,8 +20,8 @@
 ;; Commenting and uncommenting region
 (add-hook 'python-mode-hook (lambda ()
   (setq indent-tabs-mode nil)
-  (setq tab-width 2)
-  (setq python-indent 2)))
+  (setq tab-width 4)
+  (setq python-indent-offset 4)))
 
 (eval-after-load 'python
   #'(define-key python-mode-map (kbd "C-c C-c") nil))

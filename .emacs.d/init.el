@@ -10,8 +10,7 @@
 
 (defun load-init-file (file)
 	(load (locate-user-emacs-file file)))
-(defun load-external-file (file)
-	(load (locate-user-emacs-file (concat "external/" file))))
+(add-to-list 'load-path "~/.emacs.d/external")
 
 
 ;; Load initializations

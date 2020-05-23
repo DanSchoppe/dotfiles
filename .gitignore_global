@@ -12,3 +12,4 @@ api.http
 README.html
 .cquery_cached_index
 .dir-locals.el
+.mypy_cache

@@ -29,19 +29,17 @@ fi
 
 export PATH=$PATH:$HOME/Applications
 
-export CC=/usr/local/bin/clang
-export CXX=/usr/local/bin/clang++
-export CPP='/usr/local/bin/clang++ -E'
-
-# Add Python binary
-export PATH=$PATH:$HOME/Library/Python/3.6/bin
-
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH=$PATH:$HOME/.rvm/bin
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+# Allows AWS Javascript SDK to load profiles from ~/.aws/config:
+export AWS_SDK_LOAD_CONFIG=true
+
+# Yarn global binaries
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 #-------------------------------------------------------------------------------
 # alias
@@ -54,6 +52,8 @@ alias ecs='ecs-cli'
 
 if [[ ${PLATFORM} == "osx" ]]; then
   alias ls='gls -ah --color=auto'
+  alias readlink='greadlink'
+  alias date='gdate'
   alias gitg='gitx'
 elif [[ ${PLATFORM} == "linux" ]]; then
   alias ls='ls -ah --color=auto'
@@ -65,12 +65,11 @@ elif [[ ${PLATFORM} == "linux" ]]; then
   fi
 fi
 
-alias python='python3'
-alias pip='pip3'
-
 alias ag='ag --path-to-ignore ~/.ignore'
 
 alias uuid="uuidgen | awk '{print tolower(\$0)}'"
+
+alias dr='docker run --rm -it'
 
 #-------------------------------------------------------------------------------
 # ls colors

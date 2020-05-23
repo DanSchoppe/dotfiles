@@ -21,6 +21,7 @@
         dabbrev-expand
         delete-horizontal-space
         describe-key-briefly
+        downcase-word
         electric-newline-and-maybe-indent
         electric-pair-delete-pair
         end-of-buffer

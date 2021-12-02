@@ -9,3 +9,5 @@
 	path = ~/.gitconfig_system
 [pull]
 	ff = only
+[init]
+	defaultBranch = main

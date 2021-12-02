@@ -108,6 +108,11 @@ select-word-style bash
 # source ~/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.iterm2_shell_integration.zsh
 
+# Quiet down direnv output:
+export DIRENV_LOG_FORMAT=
+# hook direnv into shell:
+eval "$(direnv hook zsh)"
+
 #-------------------------------------------------------------------------------
 # system-specific configuration
 #-------------------------------------------------------------------------------
@@ -117,3 +122,4 @@ source ~/.shell_system
 # generic shell configuration
 #-------------------------------------------------------------------------------
 source ~/.shellrc
+eval "$(pyenv init -)"

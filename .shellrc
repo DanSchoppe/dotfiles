@@ -48,6 +48,7 @@ alias emacs='emacs --no-desktop --no-window-system'
 alias cls='printf "\033c"'
 alias gs='git status'
 alias gl='git lg'
+alias gsha='git rev-parse --short HEAD'
 alias ecs='ecs-cli'
 
 if [[ ${PLATFORM} == "osx" ]]; then

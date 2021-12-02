@@ -27,6 +27,7 @@
         end-of-buffer
         forward-sexp
         helm-show-kill-ring
+        ibuffer-mark-for-delete
         indent-for-tab-command
         kill-region
         markdown-outdent-or-delete

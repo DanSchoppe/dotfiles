@@ -3,10 +3,12 @@
 (setq auto-installed-packages '(
   add-node-modules-path
   ag
+  atomic-chrome
   buffer-move
   cmake-mode
   color-theme
   company-irony
+  company-lsp
   company-rtags
   company-terraform
   cquery
@@ -24,29 +26,37 @@
   helm-rtags
   icicles
   impatient-mode
-  indent-guide
+  lsp-ui
   magit
   magit-gh-pulls
+  magit-popup
   markdown-mode
   markdown-preview-mode
   mocha
   multi-term
   multiple-cursors
   popup
+  rainbow-mode
   realgud
   restclient
   rspec-mode
   rtags
   rudel
   rvm
+  scala-mode
   shackle
   solarized-theme
   sql-indent
+  string-inflection
+  sublimity
+  tide
   terraform-mode
   toml-mode
   undo-tree
   visual-regexp-steroids
   web-mode
+  wsd-mode
+  xml-rpc
   yaml-mode
 ))
 

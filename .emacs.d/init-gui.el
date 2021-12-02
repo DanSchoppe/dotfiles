@@ -1,5 +1,5 @@
 ;; Text size
-(set-face-attribute 'default nil :height 180) ;; value in 1/10pt, so 100 will be 10pt font
+(set-face-attribute 'default nil :height 160) ;; value in 1/10pt, so 100 will be 10pt font
 
 ;; Disable startup screen
 (setq inhibit-startup-screen t)

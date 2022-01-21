@@ -8,13 +8,11 @@
   cmake-mode
   color-theme
   company-irony
-  company-lsp
   company-rtags
   company-terraform
   cquery
   docker
   dockerfile-mode
-  doremi-cmd
   exec-path-from-shell
   flx-ido
   flycheck
@@ -24,7 +22,6 @@
   hackernews
   helm-ag
   helm-rtags
-  icicles
   impatient-mode
   lsp-ui
   magit
@@ -71,9 +68,6 @@
 ;; Fetch the list of packages available
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
-
-;; Load path
-(package-initialize)
 
 ;; Install the missing packages
 (dolist (package auto-installed-packages)

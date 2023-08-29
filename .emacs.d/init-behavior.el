@@ -1,7 +1,3 @@
-;; Set PATH
-(require 'exec-path-from-shell)
-(exec-path-from-shell-initialize)
-
 ;; Save Emacs Sessions
 (desktop-save-mode 1)
 
@@ -84,17 +80,7 @@
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-c |") 'mc/vertical-align-with-space)
 
-;; Regex
-(require 'visual-regexp-steroids)
-;; (define-key global-map (kbd "C-c r") 'vr/replace)
-(define-key global-map (kbd "C-M-5") 'vr/query-replace)
-;; if you use multiple-cursors, this is for you:
-(define-key global-map (kbd "C-M-m") 'vr/mc-mark)
-;; to use visual-regexp-steroids's isearch instead of the built-in regexp isearch, also include the following lines:
-(define-key global-map (kbd "C-M-r") 'vr/isearch-backward)
-(define-key global-map (kbd "C-M-s") 'vr/isearch-forward)
-
-;; Terminal
+;; terminal
 '(compilation-scroll-output (quote first-error))
 ;; '(term ((t (:inherit default))))
 
@@ -110,3 +96,15 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (global-set-key (kbd "C-c C-n") 'flycheck-next-error)
 (global-set-key (kbd "C-c C-p") 'flycheck-previous-error)
+
+;; Jump cursor movement
+(require 'avy)
+(global-set-key (kbd "C-'") 'avy-goto-char-2)
+
+;; Find symbol / symbol references
+(require 'lsp-mode)
+(with-eval-after-load 'js
+  (define-key js-mode-map (kbd "M-.") nil))
+(global-set-key (kbd "C-M-.") 'lsp-find-references)
+(with-eval-after-load 'lsp-mode
+  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))

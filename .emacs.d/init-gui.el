@@ -19,9 +19,11 @@
 
 ;; Color theme
 (load-theme 'solarized-dark t)
+;; (load-theme 'zenburn t)
 
-;; Display function name in mode-line
-(which-func-mode 1)
+
+;; Display available key bindings in mode-line
+(which-key-mode)
 
 ;; Show line and column numbers
 (setq line-number-mode t)
@@ -63,6 +65,10 @@
 (eval-after-load 'calc-mode #'(define-key c++-mode-map (kbd "M-l") nil))
 (eval-after-load 'calc-mode #'(define-key c++-mode-map (kbd "M-i") nil))
 (eval-after-load 'calc-mode #'(define-key c++-mode-map (kbd "M-k") nil))
+(eval-after-load 'treemacs-mode #'(define-key treemacs-mode-map (kbd "M-j") nil))
+(eval-after-load 'treemacs-mode #'(define-key treemacs-mode-map (kbd "M-l") nil))
+(eval-after-load 'treemacs-mode #'(define-key treemacs-mode-map (kbd "M-i") nil))
+(eval-after-load 'treemacs-mode #'(define-key treemacs-mode-map (kbd "M-k") nil))
 (global-set-key (kbd "M-j") 'windmove-left)
 (global-set-key (kbd "M-l") 'windmove-right)
 (global-set-key (kbd "M-i") 'windmove-up)
@@ -86,17 +92,15 @@
 (global-git-gutter-mode 1)
 (setq git-gutter:update-interval 1)
 
-;; helm
-(require 'helm-config)
-
 (setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
 
-;; (global-set-key (kbd "C-s") 'helm-swoop)
+(require 'helm-xref)
 (global-set-key (kbd "C-M-s") 'helm-occur)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-c h o") 'helm-occur)
+(global-set-key (kbd "C-x b") 'helm-mini)
 
 ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
 ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
@@ -118,3 +122,13 @@
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB work in terminal
 (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+
+;; Avoid performance issues in files with very long lines.
+(global-so-long-mode 1)
+
+;; Comment / uncomment regions:
+(global-set-key (kbd "C-c C-c") 'comment-region)
+(global-set-key (kbd "C-c C-u") 'uncomment-region)
+
+(provide 'init-gui)
+;;; init-gui.el ends here

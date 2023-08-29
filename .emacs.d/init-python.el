@@ -27,5 +27,3 @@
   #'(define-key python-mode-map (kbd "C-c C-c") nil))
 (eval-after-load 'python-mode
   #'(define-key python-mode-map (kbd "C-c C-u") nil))
-(global-set-key (kbd "C-c C-c") 'comment-region)
-(global-set-key (kbd "C-c C-u") 'uncomment-region)

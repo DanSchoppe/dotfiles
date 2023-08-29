@@ -6,12 +6,6 @@
           (lambda()
             (local-set-key  (kbd "C-c o") 'ff-get-other-file)))
 
-;; Commenting and uncommenting region
-(eval-after-load 'cc-mode
-  #'(define-key c++-mode-map (kbd "C-c C-u") nil))
-(global-set-key (kbd "C-c C-c") 'comment-region)
-(global-set-key (kbd "C-c C-u") 'uncomment-region)
-
 ;; Open header files in c++-mode
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.ipp\\'" . c++-mode))

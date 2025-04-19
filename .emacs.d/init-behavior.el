@@ -1,3 +1,7 @@
+;; Set PATH
+(require 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
+
 ;; Save Emacs Sessions
 (desktop-save-mode 1)
 
@@ -102,9 +106,9 @@
 (global-set-key (kbd "C-'") 'avy-goto-char-2)
 
 ;; Find symbol / symbol references
-(require 'lsp-mode)
-(with-eval-after-load 'js
-  (define-key js-mode-map (kbd "M-.") nil))
-(global-set-key (kbd "C-M-.") 'lsp-find-references)
-(with-eval-after-load 'lsp-mode
-  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
+;; (require 'lsp-mode)
+;; (with-eval-after-load 'js
+;;   (define-key js-mode-map (kbd "M-.") nil))
+;; (global-set-key (kbd "C-M-.") 'lsp-find-references)
+;; (with-eval-after-load 'lsp-mode
+;;   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))

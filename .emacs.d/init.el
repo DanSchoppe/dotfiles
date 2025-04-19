@@ -2,11 +2,11 @@
 
 (package-initialize)
 
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
-
 ;; Melpa
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
 
 (defun load-init-file (file)
 	(load (locate-user-emacs-file file)))

@@ -111,13 +111,13 @@ source ~/.iterm2_shell_integration.zsh
 #-------------------------------------------------------------------------------
 # system-specific configuration
 #-------------------------------------------------------------------------------
-source ~/.shell_system
+source ~/.profile
 
 #-------------------------------------------------------------------------------
 # generic shell configuration
 #-------------------------------------------------------------------------------
 source ~/.shellrc
-eval "$(pyenv init -)"
+# eval "$(pyenv init -)"
 
 # hook direnv into shell:
 eval "$(direnv hook zsh)"

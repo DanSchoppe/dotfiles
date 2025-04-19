@@ -1,3 +1,84 @@
+* MacOS configuration
+Invert trackpad scroll
+
+Keyboard configuration:
+- key repeat rate: fast
+- delay until repeat: short
+- turn off all smart spelling correction, capitalization, periods, etc
+- option -> command
+- command -> option
+- caps lock -> control
+- Use fn keys (F1 etc)
+- emacs hotkeys
+  ~/Library/KeyBindings/DefaultKeyBinding.dict
+  ```
+  {
+    "~d" = "deleteWordForward:";
+    "~f" = "moveWordForward:";
+    "~b" = "moveWordBackward:";
+  }
+
+Dock
+- Remove app icons
+- Turn hiding on
+
+Set computer name
+
+Software updates
+
+Install preferred browser
+- Enable sync for bookmarks, settings
+
+Install password manager
+
+Install homebrew (/bin/bash -c "$(curl ...)")
+Add brew binaries folder (eg. /opt/homebrew/bin) to PATH in ~/.shell_system
+brew install --cask:
+- iterm2
+- emacs
+- signal
+- gitx
+brew install:
+- awscli
+- certbot
+- coreutils
+- exiftool
+- ffmpeg
+- gh
+- git
+- jq
+- nvm
+- poetry
+- pyenv
+- terraform
+- the_silver_searcher
+- tree
+- watch
+- wget
+- yarn
+
+git config
+- set up user.email and user.name
+  git config --system user.email {email}
+  git config --system user.name "{First} {Last}"
+
+ssh config:
+ssh-keygen -t ed25519 -C "{email}"
+ssh-add ~/.ssh/id_ed25519
+[add public key to GH]
+
+dotfiles
+https://www.atlassian.com/git/tutorials/dotfiles
+git clone --bare https://github.com/DanSchoppe/dotfiles ~/dotfiles
+alias dotfiles='git --git-dir=$HOME/dotfiles --work-tree=$HOME'
+dotfiles checkout
+
+Install oh-my-zsh (`sh -c "$(curl ...)"`)
+From iterm2, iTerm2 -> Install Shell Integration
+
+Shell configuration
+
+
 * Kinesis keyboard
 ** QMK firmware for kinT + Teensy 4.1 controller
 QMK Configurator:

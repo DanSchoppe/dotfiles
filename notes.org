@@ -67,12 +67,6 @@ ssh-keygen -t ed25519 -C "{email}"
 ssh-add ~/.ssh/id_ed25519
 [add public key to GH]
 
-dotfiles
-https://www.atlassian.com/git/tutorials/dotfiles
-git clone --bare https://github.com/DanSchoppe/dotfiles ~/dotfiles
-alias dotfiles='git --git-dir=$HOME/dotfiles --work-tree=$HOME'
-dotfiles checkout
-
 Install oh-my-zsh (`sh -c "$(curl ...)"`)
 From iterm2, iTerm2 -> Install Shell Integration
 

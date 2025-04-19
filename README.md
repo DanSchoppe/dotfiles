@@ -10,11 +10,17 @@ symlink dotfiles from this repository to the home directory.
 ```bash
 $ git clone https://github.com/DanSchoppe/dotfiles.git
 $ cd dotfiles
-$ stow */
+$ stow --target=$HOME */
 ```
 
 Alternatively, stow packages one-at-a-time, like:
 
 ```bash
-$ stow emacs
+$ stow --target=$HOME emacs
+```
+
+After adding, moving, or deleting files, re-run stow by:
+
+```bash
+$ stow --target=$HOME --restow */
 ```

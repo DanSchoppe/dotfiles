@@ -8,8 +8,8 @@
      default))
  '(js-switch-indent-offset 2)
  '(package-selected-packages
-   '(buffer-move exec-path-from-shell git-gutter helm multiple-cursors
-                 solarized-theme))
+   '(buffer-move exec-path-from-shell git-gutter helm magit
+                 multiple-cursors solarized-theme))
  '(undo-tree-auto-save-history nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

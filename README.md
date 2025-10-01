@@ -38,6 +38,8 @@ $ stow --target=$HOME --restow */
   - command -> option
   - caps lock -> control
   - Use fn keys (F1 etc)
+  - Keyboard shortcuts
+    - Screenshots: disable all but Copy picture of selected area to the clipboard
   - emacs hotkeys
     ~/Library/KeyBindings/DefaultKeyBinding.dict
     ```
@@ -50,16 +52,23 @@ $ stow --target=$HOME --restow */
 - Dock
   - Remove app icons
   - Turn hiding on
+- Sign into MacOS
+- Enable Find My
+- Spin through Privacy & Security
 - Set computer name
 - Software updates
 
 #### Softwares
 
 Browser
-- Enable sync for bookmarks, settings
+- If logging in: enable sync for bookmarks, settings
+- Else: import relevant bookmarks, settings
 
 Password manager
 - browser extension
+
+App store
+- skitch
 
 Homebrew; brew install --cask
 - iterm2
@@ -111,6 +120,7 @@ $ cp nextstep/Emacs.app/Contents/MacOS/Emacs /usr/local/bin/emacs
   - watch
   - wget
   - yarn
+  - pre-commit
 - git config
   - set up user.email and user.name:
     git config --system user.email {email}

@@ -203,6 +203,7 @@
 (use-package yaml-mode)
 (use-package markdown-mode)
 (use-package dotenv-mode)
+(use-package terraform-mode)
 ;; javascript-mode, python-mode, and sh-mode are built-in to Emacs
 
 ;; Components (JavaScript focus, for example):

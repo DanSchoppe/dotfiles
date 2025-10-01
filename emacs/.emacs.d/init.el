@@ -115,10 +115,6 @@
   (setq company-idle-delay 0.2
         company-minimum-prefix-length 2))
 
-;; Eldoc documentation popups
-(use-package eldoc-box
-  :hook (eglot-managed-mode . eldoc-box-hover-mode))
-
 ;; Multiple Cursors
 (use-package multiple-cursors
   :bind (("C-S-c C-S-c" . mc/edit-lines)

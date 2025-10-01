@@ -22,7 +22,6 @@
 (use-package exec-path-from-shell
   :demand t ;; Load immediately, don't defer
   :config
-  (setq exec-path-from-shell-arguments nil) ;; Faster, non-interactive shell
   (exec-path-from-shell-initialize)) ;; $PATH
 
 ;; =====================

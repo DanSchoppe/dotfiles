@@ -8,6 +8,9 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster"
 # ZSH_THEME="amuse"
 
+# Hide USER@MACHINE bit from prompt:
+DEFAULT_USER="$USER"
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -117,7 +120,6 @@ source ~/.profile
 # generic shell configuration
 #-------------------------------------------------------------------------------
 source ~/.shellrc
-# eval "$(pyenv init -)"
 
 # hook direnv into shell:
 eval "$(direnv hook zsh)"

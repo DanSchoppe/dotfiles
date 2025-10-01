@@ -1,0 +1,83 @@
+## Kinesis keyboard
+
+### QMK firmware for kinT + Teensy 4.1 controller
+QMK Configurator:
+https://config.qmk.fm/#/kinesis/kint41
+
+Import keymap configuration JSON file from URL:
+https://raw.githubusercontent.com/DanSchoppe/dotfiles/main/kinesis-kint41-layout.json
+
+Make any adjustments, then download JSON file. Unfortunately the
+QMK Configurator doesn't support kinT 4.1 out of the box:
+https://github.com/qmk/qmk_firmware/issues/16440
+
+With qmk set up locally:
+```
+$ qmk compile -c kinesis-kint41-layout.json
+...
+Creating load file for flashing: .build/kinesis_kint41_dan-2022-06-30.hex                           [OK]
+Copying kinesis_kint41_dan-2022-06-30.hex to qmk_firmware folder                                    [OK]
+(Firmware size check does not yet support cortex-m4; skipping)
+```
+
+Reboot keyboard (currently programmed to Progrm key on Kinesis) with
+Teensy software tool loaded.
+
+Flash .hex to Teensy. Reboot keyboard to run new firmware.
+
+### Major mode
+Start from Windows mode.
+
+= + w enables Windows mode
+= + m enables Mac mode
+
+### Remapped keys
+Progrm + F12, then...
+
+```
+|-----------+----+------------|
+| From      | -> | To         |
+|-----------+----+------------|
+| =         | -> | `          |
+| `         | -> | =          |
+| Ctrl      | -> | Caps Lock  |
+| Ctrl      | -> | Backspace  |
+| Alt       | -> | Delete     |
+| Super     | -> | Left Ctrl  |
+| Backspace | -> | Right Ctrl |
+| Delete    | -> | Super      |
+| Tab       | -> | End        |
+| Up        | -> | Right      |
+| Down      | -> | Left       |
+| Left      | -> | Up         |
+| Right     | -> | Down       |
+|-----------+----+------------|
+```
+
+### Media keys
+`= + n` enables media keys
+  - F3:  previous
+  - F4:  play
+  - F5:  next
+  - F9:  mute
+  - F10: volume down
+  - F11: volume up
+
+disable F3-F5 by doing =+F3, =+F4, =+F5
+
+### Mac power key
+Turn scroll lock into power button:
+= + Scroll Lock
+
+### Audible tones
+Toggle: Progrm + hyphen
+The keyboard includes change-of-state tones for Caps Lock (A), Num Lock (1), Keypad, Scroll
+Lock (9) and Insert. When the keyboard is used with a PC, tones sound twice when a tonelinked
+action (e.g. Caps Lock) is turned on, and once when it is turned off.
+
+### Key click
+Toggle: Progrm + backslash \
+By default, the keyboard includes an audible key click for all keys, including the function
+keys. To turn off the key click, hold down Progrm and press the Backslash key (“\”) located
+just below the hyphen key). If you wish to turn on the key click again, simply repeat the
+process

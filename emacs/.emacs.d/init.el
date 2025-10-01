@@ -34,7 +34,10 @@
   (set-face-attribute 'default nil :height 140) ;; Set font size
   (tool-bar-mode -1) ;; Disable toolbar
   (add-to-list 'default-frame-alist '(fullscreen . maximized))
-  (load-theme 'solarized-dark t))
+  (use-package solarized-theme
+    :ensure t
+    :config
+    (load-theme 'solarized-dark t)))
 
 ;; Use ibuffer for buffer listing
 (defalias 'list-buffers 'ibuffer)

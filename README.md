@@ -68,7 +68,8 @@ Password manager
 - browser extension
 
 App store
-- skitch
+- Skitch
+  - In settings, turn off syncing
 
 Homebrew; brew install --cask
 - iterm2
@@ -114,13 +115,13 @@ $ cp nextstep/Emacs.app/Contents/MacOS/Emacs /usr/local/bin/emacs
   - nvm
   - poetry
   - pyenv
-  - terraform
   - the_silver_searcher
   - tree
   - watch
   - wget
   - yarn
   - pre-commit
+  - tfenv
 - git config
   - set up user.email and user.name:
     git config --system user.email {email}

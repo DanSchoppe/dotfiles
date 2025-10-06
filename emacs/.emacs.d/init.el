@@ -29,6 +29,10 @@
 ;; =====================
 (setq inhibit-startup-screen t)
 
+;; Don't auto-save or lock files:
+(setq auto-save-default nil)
+(setq create-lockfiles nil)
+
 ;; GUI app-specific customization:
 (when (display-graphic-p)
   (set-face-attribute 'default nil :height 140) ;; Set font size
@@ -146,6 +150,9 @@
          ("C-M-k" . buf-move-down)
          ("C-M-j" . buf-move-left)
          ("C-M-l" . buf-move-right)))
+
+;; Magit
+(use-package magit)
 
 ;; =====================
 ;; Custom Keybindings

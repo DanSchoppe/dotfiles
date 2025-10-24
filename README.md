@@ -78,6 +78,7 @@ Homebrew; brew install --cask
     - pane splitting
 - signal
 - gitx
+  - Disable "Watch for changes in repositories"
 
 ##### Emacs build from source
 
@@ -122,6 +123,7 @@ $ cp nextstep/Emacs.app/Contents/MacOS/Emacs /usr/local/bin/emacs
   - yarn
   - pre-commit
   - tfenv
+  - uv
 - git config
   - set up user.email and user.name:
     git config --system user.email {email}

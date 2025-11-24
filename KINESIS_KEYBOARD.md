@@ -1,80 +1,6 @@
-* MacOS configuration
-Invert trackpad scroll
+## Kinesis keyboard
 
-Keyboard configuration:
-- key repeat rate: fast
-- delay until repeat: short
-- turn off all smart spelling correction, capitalization, periods, etc
-- option -> command
-- command -> option
-- caps lock -> control
-- Use fn keys (F1 etc)
-- emacs hotkeys
-  ~/Library/KeyBindings/DefaultKeyBinding.dict
-  ```
-  {
-    "~d" = "deleteWordForward:";
-    "~f" = "moveWordForward:";
-    "~b" = "moveWordBackward:";
-  }
-
-Dock
-- Remove app icons
-- Turn hiding on
-
-Set computer name
-
-Software updates
-
-Install preferred browser
-- Enable sync for bookmarks, settings
-
-Install password manager
-
-Install homebrew (/bin/bash -c "$(curl ...)")
-Add brew binaries folder (eg. /opt/homebrew/bin) to PATH in ~/.shell_system
-brew install --cask:
-- iterm2
-- emacs
-- signal
-- gitx
-brew install:
-- awscli
-- certbot
-- coreutils
-- exiftool
-- ffmpeg
-- gh
-- git
-- jq
-- nvm
-- poetry
-- pyenv
-- terraform
-- the_silver_searcher
-- tree
-- watch
-- wget
-- yarn
-
-git config
-- set up user.email and user.name
-  git config --system user.email {email}
-  git config --system user.name "{First} {Last}"
-
-ssh config:
-ssh-keygen -t ed25519 -C "{email}"
-ssh-add ~/.ssh/id_ed25519
-[add public key to GH]
-
-Install oh-my-zsh (`sh -c "$(curl ...)"`)
-From iterm2, iTerm2 -> Install Shell Integration
-
-Shell configuration
-
-
-* Kinesis keyboard
-** QMK firmware for kinT + Teensy 4.1 controller
+### QMK firmware for kinT + Teensy 4.1 controller
 QMK Configurator:
 https://config.qmk.fm/#/kinesis/kint41
 
@@ -99,14 +25,16 @@ Teensy software tool loaded.
 
 Flash .hex to Teensy. Reboot keyboard to run new firmware.
 
-** Major mode
+### Major mode
 Start from Windows mode.
 
 = + w enables Windows mode
 = + m enables Mac mode
 
-** Remapped keys
+### Remapped keys
 Progrm + F12, then...
+
+```
 |-----------+----+------------|
 | From      | -> | To         |
 |-----------+----+------------|
@@ -124,9 +52,10 @@ Progrm + F12, then...
 | Left      | -> | Up         |
 | Right     | -> | Down       |
 |-----------+----+------------|
+```
 
-** Media keys
-= + n enables media keys
+### Media keys
+`= + n` enables media keys
   - F3:  previous
   - F4:  play
   - F5:  next
@@ -136,33 +65,19 @@ Progrm + F12, then...
 
 disable F3-F5 by doing =+F3, =+F4, =+F5
 
-** Mac power key
+### Mac power key
 Turn scroll lock into power button:
 = + Scroll Lock
 
-** Audible tones
+### Audible tones
 Toggle: Progrm + hyphen
 The keyboard includes change-of-state tones for Caps Lock (A), Num Lock (1), Keypad, Scroll
 Lock (9) and Insert. When the keyboard is used with a PC, tones sound twice when a tonelinked
 action (e.g. Caps Lock) is turned on, and once when it is turned off.
 
-** Key click
+### Key click
 Toggle: Progrm + backslash \
 By default, the keyboard includes an audible key click for all keys, including the function
 keys. To turn off the key click, hold down Progrm and press the Backslash key (“\”) located
 just below the hyphen key). If you wish to turn on the key click again, simply repeat the
 process
-
-* Killing processes by name
-http://stackoverflow.com/a/3510850
-kill $(ps aux | grep '[p]ython foo.py' | awk '{print $2}')
-
-* Postgres: monitoring connections by IP
-postgres=# select client_addr, count(client_addr) from pg_stat_activity group by client_addr;
-  client_addr  | count
----------------+-------
-               |     0
- 192.168.1.1   |     3
- 192.168.1.2   |     6
-
-postgres=# select pg_terminate_backend(pid) from pg_stat_activity where client_addr=192.168.1.1';

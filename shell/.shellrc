@@ -17,6 +17,8 @@ fi
 export PATH=$PATH:$HOME/Applications
 export PATH=$PATH:$HOME/scripts
 
+export EDITOR='emacs --no-desktop --no-window-system'
+
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
